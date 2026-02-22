@@ -188,11 +188,24 @@ ul { list-style: none; }
 
 .btn-full { width: 100%; justify-content: center; }
 
+.back-to-site {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue);
+  transition: var(--transition);
+}
+.back-to-site:hover {
+  color: var(--red);
+}
+
 .login-footer {
   text-align: center;
   font-size: 12px;
   color: var(--text-muted);
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 /* === ALERT BOXES === */
