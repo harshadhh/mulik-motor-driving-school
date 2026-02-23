@@ -8,7 +8,7 @@
 // ================================================================
 const CONFIG = {
   // After you deploy your Google Apps Script, paste the Web App URL here:
-  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzCnl8Ys9WzKzAhctWOGBkhi7JIE6wgDinumGp4qNn-3u5jzVteAopEalP3QoC6gdSK/exec',
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby1Lq7nxLG4uTuLKzcPdssdmTiFbjlBhz3Q7C38svQswB8RnwZSS-tJF71QAmdkKflR/exec',
 
   // Your Google Sheet ID (from the URL: docs.google.com/spreadsheets/d/THIS_PART/)
   SHEET_ID: '1Bx_GnBsd-_kjwVvJ4l0E_6KXW6Z2AOHNrpRIp_-kYx8',
@@ -616,3 +616,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load initial overview data
   switchSection('overview');
 });
+
