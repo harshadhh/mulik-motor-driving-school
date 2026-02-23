@@ -8,7 +8,7 @@
 // ================================================================
 const CONFIG = {
   // After you deploy your Google Apps Script, paste the Web App URL here:
-  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbw2rChsLlylB0j97tLdWwW0AdQ9eK4QsKdMI7paD0mhQ3iFUBerJ2xVlEhiIOSTBmNq/exec',
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzCnl8Ys9WzKzAhctWOGBkhi7JIE6wgDinumGp4qNn-3u5jzVteAopEalP3QoC6gdSK/exec',
 
   // Your Google Sheet ID (from the URL: docs.google.com/spreadsheets/d/THIS_PART/)
   SHEET_ID: '1Bx_GnBsd-_kjwVvJ4l0E_6KXW6Z2AOHNrpRIp_-kYx8',
@@ -107,17 +107,18 @@ function addRecentActivity(icon, text) {
 
 async function sendToSheet(sheetName, data) {
   if (CONFIG.SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-    // DEMO MODE — not yet configured
     console.log('DEMO MODE: Would send to', sheetName, data);
     return { success: true, demo: true };
   }
 
-  const payload = { sheet: sheetName, action: 'append', data };
-  const response = await fetch(CONFIG.SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
+  // Use GET with URL params — avoids CORS issues with Google Apps Script
+  const params = new URLSearchParams({
+    action: 'append',
+    sheet:  sheetName,
+    data:   JSON.stringify(data),
   });
+
+  const response = await fetch(`${CONFIG.SCRIPT_URL}?${params.toString()}`);
   return await response.json();
 }
 
@@ -614,5 +615,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load initial overview data
   switchSection('overview');
-
 });
