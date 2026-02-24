@@ -7,18 +7,19 @@
   <meta name="keywords" content="best driving school Vishrantwadi, driving license training Pune, women-owned driving school Alandi Road, RTO approved driving school Pune" />
   <title>Mulik Motor Driving School | Government-Approved | Vishrantwadi, Pune</title>
 
-  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&family=Nunito:wght@400;600;700&family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&family=Montserrat:wght@600;700;800&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Local Schema for SEO -->
+  <!-- Site Settings Loader — must be first -->
+  <script src="js/site-settings.js"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "DrivingSchool",
     "name": "Mulik Motor Driving School",
-    "description": "Government-approved driving school in Vishrantwadi, Pune. Expert trainers, license assistance, and mechanical workshops.",
+    "description": "Government-approved driving school in Vishrantwadi, Pune.",
     "url": "https://mulikmotordrivingschool.in",
     "telephone": "+91-XXXXXXXXXX",
     "address": {
@@ -46,18 +47,18 @@
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <div class="logo-icon">M</div>
+        <div class="logo-icon" data-s="logoImg"><span data-s="schoolInitial">M</span></div>
         <div class="logo-text">
-          <span class="logo-name">Mulik Motor</span>
-          <span class="logo-sub">Driving School</span>
+          <span class="logo-name" data-s="schoolName">Mulik Motor</span>
+          <span class="logo-sub"  data-s="schoolTagline">Driving School</span>
         </div>
       </a>
       <nav class="nav" id="nav">
-        <a href="#courses" class="nav-link">Our Courses</a>
-        <a href="#process" class="nav-link">License Process</a>
+        <a href="#courses"  class="nav-link">Our Courses</a>
+        <a href="#process"  class="nav-link">License Process</a>
         <a href="#trainers" class="nav-link">About Us</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="tel:+91XXXXXXXXXX" class="btn btn-primary btn-sm">Enroll Now</a>
+        <a href="#contact"  class="nav-link">Contact</a>
+        <a href="tel:+91XXXXXXXXXX" data-s="phoneHref" class="btn btn-primary btn-sm">Enroll Now</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -71,27 +72,27 @@
     <div class="container hero-inner">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        Government Approved · RTO Certified
+        <span data-s="heroBadge">Government Approved · RTO Certified</span>
       </div>
       <h1 class="hero-title">
-        Drive with <span class="text-accent">Experts.</span><br/>
-        Learn with <span class="text-outline">Confidence.</span>
+        <span data-s="heroTitle1">Drive with</span> <span class="text-accent" data-s="heroAccent">Experts.</span><br/>
+        <span data-s="heroTitle2">Learn with</span> <span class="text-outline" data-s="heroOutline">Confidence.</span>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub" data-s="heroSub">
         Pune's premier driving school in Vishrantwadi — building skilled, confident drivers for over a decade. Trusted by 380+ students.
       </p>
       <div class="hero-ctas">
-        <a href="tel:+91XXXXXXXXXX" class="btn btn-primary btn-lg">
+        <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-primary btn-lg">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call Mulik Sir Now
+          <span data-s="heroCTA1">Call Mulik Sir Now</span>
         </a>
-        <a href="#courses" class="btn btn-outline btn-lg">View Courses →</a>
+        <a href="#courses" class="btn btn-outline btn-lg"><span data-s="heroCTA2">View Courses →</span></a>
       </div>
       <div class="hero-trust">
-        <div class="trust-pill">⭐ 4.9 / 5</div>
-        <div class="trust-pill">👩 Women-Owned</div>
-        <div class="trust-pill">🏛️ Govt. Approved</div>
-        <div class="trust-pill">383 Reviews</div>
+        <div class="trust-pill" data-s="trustPill1">⭐ 4.9 / 5</div>
+        <div class="trust-pill" data-s="trustPill2">👩 Women-Owned</div>
+        <div class="trust-pill" data-s="trustPill3">🏛️ Govt. Approved</div>
+        <div class="trust-pill" data-s="trustPill4">383 Reviews</div>
       </div>
     </div>
     <div class="hero-visual">
@@ -122,23 +123,23 @@
   <section class="trust-bar">
     <div class="container trust-bar-inner">
       <div class="trust-item">
-        <div class="trust-num" data-count="383">0</div>
-        <div class="trust-label">5-Star Reviews</div>
+        <div class="trust-num" data-s="stat1Num" data-count="383">0</div>
+        <div class="trust-label" data-s="stat1Label">5-Star Reviews</div>
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <div class="trust-num" data-count="380">0</div>
-        <div class="trust-label">Success Stories</div>
+        <div class="trust-num" data-s="stat2Num" data-count="380">0</div>
+        <div class="trust-label" data-s="stat2Label">Success Stories</div>
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <div class="trust-num trust-text">10+</div>
-        <div class="trust-label">Years of Experience</div>
+        <div class="trust-num trust-text" data-s="stat3Num">10+</div>
+        <div class="trust-label" data-s="stat3Label">Years of Experience</div>
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <div class="trust-num trust-text">4.9★</div>
-        <div class="trust-label">Google Rating</div>
+        <div class="trust-num trust-text" data-s="stat4Num">4.9★</div>
+        <div class="trust-label" data-s="stat4Label">Google Rating</div>
       </div>
     </div>
   </section>
@@ -164,7 +165,7 @@
             <li>✓ Reverse & Parking Mastery</li>
             <li>✓ RTO Test Preparation</li>
           </ul>
-          <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">Enquire Now →</a>
+          <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-primary">Enquire Now →</a>
         </div>
         <div class="course-card">
           <div class="course-icon">📋</div>
@@ -176,7 +177,7 @@
             <li>✓ Learner's License Test Prep</li>
             <li>✓ LL to DL Upgrade Support</li>
           </ul>
-          <a href="tel:+91XXXXXXXXXX" class="btn btn-outline">Get Help →</a>
+          <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-outline">Get Help →</a>
         </div>
         <div class="course-card">
           <div class="course-icon">🔄</div>
@@ -188,26 +189,26 @@
             <li>✓ Parking in Tight Spaces</li>
             <li>✓ Night Driving Basics</li>
           </ul>
-          <a href="tel:+91XXXXXXXXXX" class="btn btn-outline">Book Session →</a>
+          <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-outline">Book Session →</a>
         </div>
         <div class="course-card course-special">
           <div class="course-icon">🔧</div>
           <h3>Mechanical Workshop</h3>
           <p class="course-special-tag">The Mulik Edge — Unique to our school</p>
-          <p>Learn basic car maintenance every driver should know — from tyre changes to engine checks. Pinpoint Workshop sessions.</p>
+          <p>Learn basic car maintenance every driver should know — from tyre changes to engine checks.</p>
           <ul class="course-features">
             <li>✓ Tyre Change & Pressure Check</li>
             <li>✓ Engine Oil & Fluids Basics</li>
             <li>✓ Emergency Breakdown Tips</li>
             <li>✓ Dashboard Warning Lights</li>
           </ul>
-          <a href="tel:+91XXXXXXXXXX" class="btn btn-outline">Learn More →</a>
+          <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-outline">Learn More →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CONFIDENCE TRACKER ============ -->
+  <!-- ============ PROGRESS ============ -->
   <section class="section progress-section">
     <div class="container">
       <div class="section-header">
@@ -217,45 +218,30 @@
       <div class="progress-track">
         <div class="progress-step active">
           <div class="step-num">01</div>
-          <div class="step-content">
-            <h4>Theory Basics</h4>
-            <p>Road signs, signals, RTO rules, and safe driving principles.</p>
-          </div>
+          <div class="step-content"><h4>Theory Basics</h4><p>Road signs, signals, RTO rules, and safe driving principles.</p></div>
           <div class="step-day">Day 1–3</div>
         </div>
         <div class="progress-connector"></div>
         <div class="progress-step">
           <div class="step-num">02</div>
-          <div class="step-content">
-            <h4>Field Training</h4>
-            <p>Hands-on driving in a safe enclosed space with expert guidance.</p>
-          </div>
+          <div class="step-content"><h4>Field Training</h4><p>Hands-on driving in a safe enclosed space with expert guidance.</p></div>
           <div class="step-day">Day 4–12</div>
         </div>
         <div class="progress-connector"></div>
         <div class="progress-step">
           <div class="step-num">03</div>
-          <div class="step-content">
-            <h4>Mechanical Workshop</h4>
-            <p>Pinpoint Workshop session — understand your car beyond driving.</p>
-          </div>
+          <div class="step-content"><h4>Mechanical Workshop</h4><p>Pinpoint Workshop session — understand your car beyond driving.</p></div>
           <div class="step-day">Day 13–15</div>
         </div>
         <div class="progress-connector"></div>
         <div class="progress-step">
           <div class="step-num">04</div>
-          <div class="step-content">
-            <h4>License Final</h4>
-            <p>RTO test preparation, mock drives, and license procurement support.</p>
-          </div>
+          <div class="step-content"><h4>License Final</h4><p>RTO test preparation, mock drives, and license procurement support.</p></div>
           <div class="step-day">Day 16–20 🎉</div>
         </div>
       </div>
       <div class="progress-bar-container">
-        <div class="progress-bar-label">
-          <span>Day 1: Basics</span>
-          <span>Day 20: License Day!</span>
-        </div>
+        <div class="progress-bar-label"><span>Day 1: Basics</span><span>Day 20: License Day!</span></div>
         <div class="progress-bar-track">
           <div class="progress-bar-fill" id="progressFill"></div>
           <div class="progress-car-icon">🚗</div>
@@ -270,17 +256,15 @@
       <div class="section-header">
         <span class="section-tag">Meet Your Trainers</span>
         <h2 class="section-title">Patient Experts Who<br/><span class="text-accent">Make You Confident</span></h2>
-        <p class="section-sub">Every instructor at Mulik Motor is trained to be calm, patient, and encouraging — especially for beginners and women learners.</p>
+        <p class="section-sub">Every instructor at Mulik Motor is trained to be calm, patient, and encouraging.</p>
       </div>
       <div class="trainers-grid">
         <div class="trainer-card trainer-featured">
-          <div class="trainer-avatar">
-            <div class="avatar-placeholder">MS</div>
-          </div>
+          <div class="trainer-avatar"><div class="avatar-placeholder" data-s="trainer1Initial">MS</div></div>
           <div class="trainer-info">
-            <h3>Mulik Sir</h3>
-            <p class="trainer-role">Founder & Head Trainer</p>
-            <p class="trainer-bio">Over a decade of experience shaping confident drivers in Vishrantwadi. Known for his calm demeanor and structured teaching style.</p>
+            <h3 data-s="trainer1Name">Mulik Sir</h3>
+            <p class="trainer-role" data-s="trainer1Role">Founder & Head Trainer</p>
+            <p class="trainer-bio"  data-s="trainer1Bio">Over a decade of experience shaping confident drivers in Vishrantwadi. Known for his calm demeanor and structured teaching style.</p>
             <div class="trainer-badges">
               <span class="badge">👏 Patience Level: 100%</span>
               <span class="badge">🏛️ RTO Certified</span>
@@ -289,13 +273,11 @@
           </div>
         </div>
         <div class="trainer-card">
-          <div class="trainer-avatar">
-            <div class="avatar-placeholder" style="background:#1976D2;">AS</div>
-          </div>
+          <div class="trainer-avatar"><div class="avatar-placeholder" style="background:#1976D2;" data-s="trainer2Initial">AS</div></div>
           <div class="trainer-info">
-            <h3>Ashish Sir</h3>
-            <p class="trainer-role">Senior Driving Instructor</p>
-            <p class="trainer-bio">Specializes in beginner and women learners. Students consistently rate his sessions as comfortable and encouraging.</p>
+            <h3 data-s="trainer2Name">Ashish Sir</h3>
+            <p class="trainer-role" data-s="trainer2Role">Senior Driving Instructor</p>
+            <p class="trainer-bio"  data-s="trainer2Bio">Specializes in beginner and women learners. Students consistently rate his sessions as comfortable and encouraging.</p>
             <div class="trainer-badges">
               <span class="badge">👏 Patience Level: 100%</span>
               <span class="badge">⭐ 5-Star Rated</span>
@@ -303,13 +285,11 @@
           </div>
         </div>
         <div class="trainer-card">
-          <div class="trainer-avatar">
-            <div class="avatar-placeholder" style="background:#2e7d32;">MG</div>
-          </div>
+          <div class="trainer-avatar"><div class="avatar-placeholder" style="background:#2e7d32;" data-s="trainer3Initial">MG</div></div>
           <div class="trainer-info">
-            <h3>Mangesh Sir</h3>
-            <p class="trainer-role">Driving Instructor & Workshop Lead</p>
-            <p class="trainer-bio">Expert in mechanical fundamentals and advanced road driving. Leads the Pinpoint Workshop sessions at Mulik Motor.</p>
+            <h3 data-s="trainer3Name">Mangesh Sir</h3>
+            <p class="trainer-role" data-s="trainer3Role">Driving Instructor & Workshop Lead</p>
+            <p class="trainer-bio"  data-s="trainer3Bio">Expert in mechanical fundamentals and advanced road driving. Leads the Pinpoint Workshop sessions at Mulik Motor.</p>
             <div class="trainer-badges">
               <span class="badge">👏 Patience Level: 100%</span>
               <span class="badge">🔧 Workshop Expert</span>
@@ -321,13 +301,13 @@
         <div class="women-icon">♀</div>
         <div class="women-text">
           <strong>Proudly Women-Owned & Women-Friendly</strong>
-          <span>Our school was founded with a special focus on creating a safe, comfortable learning environment for women. All our instructors are trained in patient, judgment-free teaching.</span>
+          <span>Our school was founded with a special focus on creating a safe, comfortable learning environment for women.</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ RTO CHECKLIST ============ -->
+  <!-- ============ RTO PROCESS ============ -->
   <section class="section" id="process">
     <div class="container">
       <div class="section-header">
@@ -343,76 +323,20 @@
             <p>Bring these 5 items on Day 1 and we'll handle the rest</p>
           </div>
           <ul class="checklist-items">
-            <li class="checklist-item">
-              <span class="check-box">✓</span>
-              <div>
-                <strong>Age & Identity Proof</strong>
-                <span>Aadhaar Card / Passport / Voter ID</span>
-              </div>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">✓</span>
-              <div>
-                <strong>Address Proof</strong>
-                <span>Aadhaar Card / Utility Bill / Bank Statement</span>
-              </div>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">✓</span>
-              <div>
-                <strong>Passport-Size Photographs</strong>
-                <span>3 recent photos (white or light background)</span>
-              </div>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">✓</span>
-              <div>
-                <strong>Medical Form (Form 1A)</strong>
-                <span>Available at RTO office or we can help you get it</span>
-              </div>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">✓</span>
-              <div>
-                <strong>Application Fee</strong>
-                <span>Learner's License fee as per current RTO rates</span>
-              </div>
-            </li>
+            <li class="checklist-item"><span class="check-box">✓</span><div><strong>Age & Identity Proof</strong><span>Aadhaar Card / Passport / Voter ID</span></div></li>
+            <li class="checklist-item"><span class="check-box">✓</span><div><strong>Address Proof</strong><span>Aadhaar Card / Utility Bill / Bank Statement</span></div></li>
+            <li class="checklist-item"><span class="check-box">✓</span><div><strong>Passport-Size Photographs</strong><span>3 recent photos (white or light background)</span></div></li>
+            <li class="checklist-item"><span class="check-box">✓</span><div><strong>Medical Form (Form 1A)</strong><span>Available at RTO or we can help you get it</span></div></li>
+            <li class="checklist-item"><span class="check-box">✓</span><div><strong>Application Fee</strong><span>As per current RTO rates</span></div></li>
           </ul>
-          <a href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="width:100%;text-align:center;margin-top:1rem;">
-            We'll Walk You Through It →
-          </a>
+          <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="width:100%;text-align:center;margin-top:1rem;">We'll Walk You Through It →</a>
         </div>
         <div class="process-steps">
           <h3>The Full License Journey</h3>
-          <div class="process-step-item">
-            <div class="ps-num">1</div>
-            <div class="ps-text">
-              <strong>Enroll & Complete Training</strong>
-              <p>Join our 20-day course and build real driving skill with expert instructors.</p>
-            </div>
-          </div>
-          <div class="process-step-item">
-            <div class="ps-num">2</div>
-            <div class="ps-text">
-              <strong>Apply for Learner's License</strong>
-              <p>We help fill your online Sarathi Parivahan form and prepare you for the LL test.</p>
-            </div>
-          </div>
-          <div class="process-step-item">
-            <div class="ps-num">3</div>
-            <div class="ps-text">
-              <strong>RTO Mock Test Preparation</strong>
-              <p>Practice on our road sign charts and take mock tests to build exam confidence.</p>
-            </div>
-          </div>
-          <div class="process-step-item">
-            <div class="ps-num">4</div>
-            <div class="ps-text">
-              <strong>Permanent License (After 30 Days)</strong>
-              <p>Once your LL is 30 days old, apply for the Permanent DL. We assist throughout.</p>
-            </div>
-          </div>
+          <div class="process-step-item"><div class="ps-num">1</div><div class="ps-text"><strong>Enroll & Complete Training</strong><p>Join our 20-day course and build real driving skill with expert instructors.</p></div></div>
+          <div class="process-step-item"><div class="ps-num">2</div><div class="ps-text"><strong>Apply for Learner's License</strong><p>We help fill your online Sarathi Parivahan form and prepare you for the LL test.</p></div></div>
+          <div class="process-step-item"><div class="ps-num">3</div><div class="ps-text"><strong>RTO Mock Test Preparation</strong><p>Practice on our road sign charts and take mock tests to build exam confidence.</p></div></div>
+          <div class="process-step-item"><div class="ps-num">4</div><div class="ps-text"><strong>Permanent License (After 30 Days)</strong><p>Once your LL is 30 days old, apply for the Permanent DL. We assist throughout.</p></div></div>
         </div>
       </div>
     </div>
@@ -428,80 +352,36 @@
     </div>
     <div class="marquee-outer">
       <div class="marquee-track" id="marqueeTrack">
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week. I never thought I could drive but here I am!"</p>
-          <div class="reviewer">— Priya S., Vishrantwadi</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Best driving school in Pune. Ashish Sir is incredibly calm and never made me feel nervous. Got my license on the first attempt!"</p>
-          <div class="reviewer">— Rahul M., Alandi Road</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"As a woman learner I was nervous, but the environment here is so welcoming and safe. Highly recommend to every woman looking to learn driving."</p>
-          <div class="reviewer">— Sneha K., Vishrantwadi</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"The mechanical workshop session was a bonus I didn't expect! Now I know how to change a tyre and check my oil. Very practical school."</p>
-          <div class="reviewer">— Vikram P., Hadapsar</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Mangesh Sir's teaching is excellent. Very systematic, very patient. The whole team at Mulik Motor is top class. 5 stars without question."</p>
-          <div class="reviewer">— Anita R., Pune</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"I was scared of traffic but after 20 days with Mulik Motor, I'm driving daily on Alandi Road without any stress. Thank you so much!"</p>
-          <div class="reviewer">— Suresh D., Vishrantwadi</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Very professional school. The RTO documentation process was completely stress-free because they handled everything. 100% recommend!"</p>
-          <div class="reviewer">— Meera T., Alandi Road</div>
-        </div>
-        <!-- Duplicated for seamless loop -->
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week. I never thought I could drive but here I am!"</p>
-          <div class="reviewer">— Priya S., Vishrantwadi</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Best driving school in Pune. Ashish Sir is incredibly calm and never made me feel nervous. Got my license on the first attempt!"</p>
-          <div class="reviewer">— Rahul M., Alandi Road</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"As a woman learner I was nervous, but the environment here is so welcoming and safe. Highly recommend to every woman looking to learn driving."</p>
-          <div class="reviewer">— Sneha K., Vishrantwadi</div>
-        </div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week. I never thought I could drive but here I am!"</p><div class="reviewer">— Priya S., Vishrantwadi</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best driving school in Pune. Ashish Sir is incredibly calm and never made me feel nervous. Got my license on the first attempt!"</p><div class="reviewer">— Rahul M., Alandi Road</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"As a woman learner I was nervous, but the environment here is so welcoming and safe. Highly recommend to every woman looking to learn driving."</p><div class="reviewer">— Sneha K., Vishrantwadi</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The mechanical workshop session was a bonus I didn't expect! Now I know how to change a tyre and check my oil. Very practical school."</p><div class="reviewer">— Vikram P., Hadapsar</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Mangesh Sir's teaching is excellent. Very systematic, very patient. The whole team at Mulik Motor is top class. 5 stars without question."</p><div class="reviewer">— Anita R., Pune</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"I was scared of traffic but after 20 days with Mulik Motor, I'm driving daily on Alandi Road without any stress. Thank you so much!"</p><div class="reviewer">— Suresh D., Vishrantwadi</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Very professional school. The RTO documentation process was completely stress-free because they handled everything. 100% recommend!"</p><div class="reviewer">— Meera T., Alandi Road</div></div>
+        <!-- Duplicate for loop -->
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week. I never thought I could drive but here I am!"</p><div class="reviewer">— Priya S., Vishrantwadi</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best driving school in Pune. Ashish Sir is incredibly calm and never made me feel nervous. Got my license on the first attempt!"</p><div class="reviewer">— Rahul M., Alandi Road</div></div>
+        <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"As a woman learner I was nervous, but the environment here is so welcoming and safe. Highly recommend to every woman looking to learn driving."</p><div class="reviewer">— Sneha K., Vishrantwadi</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA SECTION ============ -->
+  <!-- ============ CTA ============ -->
   <section class="cta-section">
     <div class="cta-bg-pattern"></div>
     <div class="container cta-inner">
-      <h2>Ready to Start Your Journey?</h2>
-      <p>Join 380+ confident drivers who learned with Mulik Motor. Seats are limited — call us today to reserve yours.</p>
+      <h2 data-s="ctaTitle">Ready to Start Your Journey?</h2>
+      <p data-s="ctaSubtext">Join 380+ confident drivers who learned with Mulik Motor. Seats are limited — call us today to reserve yours.</p>
       <div class="cta-buttons">
-        <a href="tel:+91XXXXXXXXXX" class="btn btn-white btn-lg">
-          📞 Call Mulik Sir Now
-        </a>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-whatsapp btn-lg">
-          💬 WhatsApp Us
-        </a>
+        <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-white btn-lg"><span data-s="ctaBtn1">📞 Call Mulik Sir Now</span></a>
+        <a data-s="waHref"    href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-whatsapp btn-lg"><span data-s="ctaBtn2">💬 WhatsApp Us</span></a>
       </div>
-      <div class="cta-hours">🕐 Open Daily: 7:00 AM – 9:00 PM &nbsp;|&nbsp; Vishrantwadi, Alandi Road, Pune</div>
+      <div class="cta-hours" data-s="ctaHours">🕐 Open Daily: 7:00 AM – 9:00 PM &nbsp;|&nbsp; Vishrantwadi, Alandi Road, Pune</div>
     </div>
   </section>
 
-  <!-- ============ CONTACT & MAP ============ -->
+  <!-- ============ CONTACT ============ -->
   <section class="section" id="contact">
     <div class="container">
       <div class="section-header">
@@ -513,47 +393,31 @@
           <div class="contact-card">
             <div class="contact-item">
               <span class="contact-icon">📍</span>
-              <div>
-                <strong>Address</strong>
-                <p>Mulik Motor Driving School,<br/>Vishrantwadi, Alandi Road,<br/>Pune, Maharashtra – 411015</p>
-              </div>
+              <div><strong>Address</strong><p data-s="addressText">Mulik Motor Driving School,<br/>Vishrantwadi, Alandi Road,<br/>Pune, Maharashtra – 411015</p></div>
             </div>
             <div class="contact-item">
               <span class="contact-icon">📞</span>
-              <div>
-                <strong>Phone</strong>
-                <a href="tel:+91XXXXXXXXXX">+91 XXXX XX XXXX</a>
-              </div>
+              <div><strong>Phone</strong><a data-s="phoneHref" href="tel:+91XXXXXXXXXX"><span data-s="phoneText">+91 XXXX XX XXXX</span></a></div>
             </div>
             <div class="contact-item">
               <span class="contact-icon">🕐</span>
-              <div>
-                <strong>Working Hours</strong>
-                <p>Monday – Sunday<br/>7:00 AM – 9:00 PM</p>
-              </div>
+              <div><strong>Working Hours</strong><p><span data-s="hoursLabel">Monday – Sunday</span><br/><span data-s="hoursText">7:00 AM – 9:00 PM</span></p></div>
             </div>
             <div class="contact-item">
               <span class="contact-icon">💬</span>
-              <div>
-                <strong>WhatsApp</strong>
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank">Message Us on WhatsApp</a>
-              </div>
+              <div><strong>WhatsApp</strong><a data-s="waHref" href="https://wa.me/91XXXXXXXXXX" target="_blank">Message Us on WhatsApp</a></div>
             </div>
             <div class="contact-actions">
-              <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">📞 Call Now</a>
-              <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp">💬 WhatsApp</a>
+              <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="btn btn-primary">📞 Call Now</a>
+              <a data-s="waHref"    href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp">💬 WhatsApp</a>
             </div>
           </div>
         </div>
         <div class="map-container">
-          <!-- Replace src with actual Google Maps embed link -->
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.8743!2d73.8932!3d18.5778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM0JzQwLjEiTiA3M8KwNTMnMzUuNSJF!5e0!3m2!1sen!2sin!4v1234567890"
-            width="100%"
-            height="400"
-            style="border:0;border-radius:12px;"
-            allowfullscreen=""
-            loading="lazy"
+          <iframe data-s="mapEmbed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1d3781.8743!2d73.8932!3d18.5778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM0JzQwLjEiTiA3M8KwNTMnMzUuNSJF!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%" height="400" style="border:0;border-radius:12px;"
+            allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Mulik Motor Driving School Location">
           </iframe>
@@ -567,13 +431,13 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <div class="logo">
-          <div class="logo-icon">M</div>
+          <div class="logo-icon" data-s="logoImg"><span data-s="schoolInitial">M</span></div>
           <div class="logo-text">
-            <span class="logo-name">Mulik Motor</span>
-            <span class="logo-sub">Driving School</span>
+            <span class="logo-name" data-s="schoolName">Mulik Motor</span>
+            <span class="logo-sub"  data-s="schoolTagline">Driving School</span>
           </div>
         </div>
-        <p>Pune's trusted, government-approved driving school. Serving Vishrantwadi and Alandi Road with patience, expertise, and dedication.</p>
+        <p data-s="footerDesc">Pune's trusted, government-approved driving school. Serving Vishrantwadi and Alandi Road with patience, expertise, and dedication.</p>
         <div class="footer-badges">
           <span>🏛️ Govt. Approved</span>
           <span>♀ Women-Owned</span>
@@ -589,22 +453,22 @@
       </div>
       <div class="footer-contact">
         <h4>Contact</h4>
-        <p>Vishrantwadi, Alandi Road,<br/>Pune – 411015</p>
-        <a href="tel:+91XXXXXXXXXX">+91 XXXX XX XXXX</a>
-        <p>Open 7 AM – 9 PM Daily</p>
+        <p data-s="addressText">Vishrantwadi, Alandi Road,<br/>Pune – 411015</p>
+        <a data-s="phoneHref" href="tel:+91XXXXXXXXXX"><span data-s="phoneText">+91 XXXX XX XXXX</span></a>
+        <p>Open <span data-s="hoursText">7 AM – 9 PM</span> Daily</p>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2025 Mulik Motor Driving School. All rights reserved. | Keywords: Best Driving School Vishrantwadi · Driving License Pune · Women Driving School Alandi Road</p>
+        <p data-s="footerCopyright">© 2025 Mulik Motor Driving School. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- STICKY CALL BUTTON (Mobile) -->
-  <a href="tel:+91XXXXXXXXXX" class="sticky-call" id="stickyCTA">
+  <!-- STICKY CALL -->
+  <a data-s="phoneHref" href="tel:+91XXXXXXXXXX" class="sticky-call" id="stickyCTA">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Call Mulik Sir
+    <span data-s="heroCTA1">Call Mulik Sir</span>
   </a>
 
   <script src="js/script.js"></script>
