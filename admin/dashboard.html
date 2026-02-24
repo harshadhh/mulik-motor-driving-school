@@ -45,6 +45,9 @@
       <a href="#" class="nav-item" data-section="instructors">
         <span class="nav-icon">👨‍🏫</span> Instructors
       </a>
+      <a href="#" class="nav-item nav-item-editor" data-section="siteeditor">
+        <span class="nav-icon">🎨</span> Website Editor
+      </a>
     </nav>
 
     <div class="sidebar-footer">
@@ -679,7 +682,475 @@
 
   </div><!-- end dashboard-main -->
 
+  <!-- ============ SITE EDITOR SECTION ============ -->
+  <section class="dash-section" id="section-siteeditor" style="display:none;">
+    <div class="section-title-bar">
+      <h2>🎨 Website Editor</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-outline btn-sm" id="sePreviewBtn">👁 Preview Site</button>
+        <button class="btn btn-cancel" id="seResetBtn">↩ Reset Defaults</button>
+        <button class="btn btn-primary" id="seSaveBtn">💾 Save &amp; Publish Changes</button>
+      </div>
+    </div>
+
+    <div class="se-intro">
+      <span>✏️</span>
+      <div>
+        <strong>Edit anything on your website below.</strong>
+        Changes save instantly to your browser and apply to the public website immediately. No coding needed — just type and save.
+      </div>
+    </div>
+
+    <div id="seStatus" class="se-status"></div>
+
+    <div class="editor-wrap">
+
+      <!-- ===== BRAND & IDENTITY ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>🏫 School Name &amp; Brand</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>School Name (Logo)</label><input type="text" id="se_schoolName" /></div>
+            <div class="se-field"><label>Tagline (under logo)</label><input type="text" id="se_schoolTagline" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Logo Letter/Icon</label><input type="text" id="se_logoLetter" maxlength="2" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== COLORS ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>🎨 Colors</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <p class="se-hint">These colors apply across the entire website — buttons, accents, highlights and more.</p>
+          <div class="se-row">
+            <div class="se-field">
+              <label>Primary Color (Red — buttons, accents)</label>
+              <div class="color-row">
+                <input type="color" id="se_primaryColor" class="editor-color-input" />
+                <div class="color-preview" id="se_preview_primaryColor"></div>
+                <input type="text" id="se_primaryColor_hex" placeholder="#D32F2F" style="max-width:100px;" />
+              </div>
+            </div>
+            <div class="se-field">
+              <label>Secondary Color (Blue — trust, links)</label>
+              <div class="color-row">
+                <input type="color" id="se_secondaryColor" class="editor-color-input" />
+                <div class="color-preview" id="se_preview_secondaryColor"></div>
+                <input type="text" id="se_secondaryColor_hex" placeholder="#1976D2" style="max-width:100px;" />
+              </div>
+            </div>
+          </div>
+          <div class="se-row">
+            <div class="se-field">
+              <label>Button Hover Color (darker red)</label>
+              <div class="color-row">
+                <input type="color" id="se_accentDark" class="editor-color-input" />
+                <div class="color-preview" id="se_preview_accentDark"></div>
+              </div>
+            </div>
+            <div class="se-field">
+              <label>Hero Background Color 1</label>
+              <div class="color-row">
+                <input type="color" id="se_heroBg1" class="editor-color-input" />
+                <div class="color-preview" id="se_preview_heroBg1"></div>
+              </div>
+            </div>
+            <div class="se-field">
+              <label>Hero Background Color 2</label>
+              <div class="color-row">
+                <input type="color" id="se_heroBg2" class="editor-color-input" />
+                <div class="color-preview" id="se_preview_heroBg2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FONTS ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>✍️ Fonts</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field">
+              <label>Headline Font (for big titles)</label>
+              <select id="se_headFont">
+                <option value="Barlow Condensed">Barlow Condensed (Current)</option>
+                <option value="Oswald">Oswald</option>
+                <option value="Bebas Neue">Bebas Neue</option>
+                <option value="Anton">Anton</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Poppins">Poppins</option>
+                <option value="Raleway">Raleway</option>
+                <option value="Playfair Display">Playfair Display</option>
+                <option value="Lato">Lato</option>
+              </select>
+              <div class="font-preview" id="font_preview_headFont">Barlow Condensed — Aa Bb Cc 1 2 3</div>
+            </div>
+            <div class="se-field">
+              <label>Body Font (for regular text)</label>
+              <select id="se_bodyFont">
+                <option value="DM Sans">DM Sans (Current)</option>
+                <option value="Inter">Inter</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Open Sans">Open Sans</option>
+                <option value="Nunito">Nunito</option>
+                <option value="Poppins">Poppins</option>
+                <option value="Lato">Lato</option>
+                <option value="Source Sans Pro">Source Sans Pro</option>
+                <option value="Noto Sans">Noto Sans</option>
+              </select>
+              <div class="font-preview" id="font_preview_bodyFont" style="font-size:14px;">DM Sans — Aa Bb Cc 1 2 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CONTACT ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>📞 Contact Information</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>Phone Number (with +91)</label><input type="text" id="se_phone" placeholder="+91XXXXXXXXXX" /></div>
+            <div class="se-field"><label>WhatsApp Number (without +)</label><input type="text" id="se_whatsapp" placeholder="91XXXXXXXXXX" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Full Address</label><input type="text" id="se_address" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Working Hours</label><input type="text" id="se_hours" placeholder="7:00 AM – 9:00 PM" /></div>
+            <div class="se-field"><label>Working Days</label><input type="text" id="se_workingDays" placeholder="Monday – Sunday" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full">
+              <label>Google Maps Embed URL</label>
+              <input type="text" id="se_mapEmbed" placeholder="Paste full Google Maps embed src URL here" />
+              <span class="se-hint">Go to Google Maps → Share → Embed a map → copy the src="..." value only</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HERO SECTION ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>🦸 Hero Section (Top of Page)</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field se-full"><label>Badge Text (small text above headline)</label><input type="text" id="se_heroBadge" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Headline — Part 1</label><input type="text" id="se_heroTitle1" /></div>
+            <div class="se-field"><label>Headline — Accent Word (red)</label><input type="text" id="se_heroAccent" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Headline — Part 2</label><input type="text" id="se_heroTitle2" /></div>
+            <div class="se-field"><label>Headline — Outline Word (blue outline)</label><input type="text" id="se_heroOutline" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Sub-headline (description text)</label><textarea id="se_heroSub" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Call Button Text</label><input type="text" id="se_heroBtnCall" /></div>
+            <div class="se-field"><label>Courses Button Text</label><input type="text" id="se_heroBtnCourses" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Trust Pill 1</label><input type="text" id="se_heroPill1" /></div>
+            <div class="se-field"><label>Trust Pill 2</label><input type="text" id="se_heroPill2" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Trust Pill 3</label><input type="text" id="se_heroPill3" /></div>
+            <div class="se-field"><label>Trust Pill 4</label><input type="text" id="se_heroPill4" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Fleet/Car Section Label</label><input type="text" id="se_fleetLabel" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STATS BAR ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>📊 Stats / Numbers Bar</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>Stat 1 Number</label><input type="text" id="se_stat1Num" /></div>
+            <div class="se-field"><label>Stat 1 Label</label><input type="text" id="se_stat1Label" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Stat 2 Number</label><input type="text" id="se_stat2Num" /></div>
+            <div class="se-field"><label>Stat 2 Label</label><input type="text" id="se_stat2Label" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Stat 3 Number</label><input type="text" id="se_stat3Num" /></div>
+            <div class="se-field"><label>Stat 3 Label</label><input type="text" id="se_stat3Label" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Stat 4 Number</label><input type="text" id="se_stat4Num" /></div>
+            <div class="se-field"><label>Stat 4 Label</label><input type="text" id="se_stat4Label" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== COURSES ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>📚 Courses Section</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>Section Tag</label><input type="text" id="se_coursesTag" /></div>
+            <div class="se-field"><label>Section Title</label><input type="text" id="se_coursesTitle" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Title Accent Part</label><input type="text" id="se_coursesTitleAccent" /></div>
+            <div class="se-field se-full"><label>Section Description</label><input type="text" id="se_coursesSub" /></div>
+          </div>
+          <hr class="se-divider" />
+          <p class="se-section-label">🚗 Course 1 (Featured)</p>
+          <div class="se-row">
+            <div class="se-field"><label>Course Name</label><input type="text" id="se_course1Name" /></div>
+            <div class="se-field se-full"><label>Description</label><textarea id="se_course1Desc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 1</label><input type="text" id="se_course1Feat1" /></div>
+            <div class="se-field"><label>Feature 2</label><input type="text" id="se_course1Feat2" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 3</label><input type="text" id="se_course1Feat3" /></div>
+            <div class="se-field"><label>Feature 4</label><input type="text" id="se_course1Feat4" /></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Feature 5</label><input type="text" id="se_course1Feat5" /></div></div>
+          <hr class="se-divider" />
+          <p class="se-section-label">📋 Course 2</p>
+          <div class="se-row">
+            <div class="se-field"><label>Course Name</label><input type="text" id="se_course2Name" /></div>
+            <div class="se-field se-full"><label>Description</label><textarea id="se_course2Desc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 1</label><input type="text" id="se_course2Feat1" /></div>
+            <div class="se-field"><label>Feature 2</label><input type="text" id="se_course2Feat2" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 3</label><input type="text" id="se_course2Feat3" /></div>
+            <div class="se-field"><label>Feature 4</label><input type="text" id="se_course2Feat4" /></div>
+          </div>
+          <hr class="se-divider" />
+          <p class="se-section-label">🔄 Course 3</p>
+          <div class="se-row">
+            <div class="se-field"><label>Course Name</label><input type="text" id="se_course3Name" /></div>
+            <div class="se-field se-full"><label>Description</label><textarea id="se_course3Desc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 1</label><input type="text" id="se_course3Feat1" /></div>
+            <div class="se-field"><label>Feature 2</label><input type="text" id="se_course3Feat2" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 3</label><input type="text" id="se_course3Feat3" /></div>
+            <div class="se-field"><label>Feature 4</label><input type="text" id="se_course3Feat4" /></div>
+          </div>
+          <hr class="se-divider" />
+          <p class="se-section-label">🔧 Course 4 (Workshop)</p>
+          <div class="se-row">
+            <div class="se-field"><label>Course Name</label><input type="text" id="se_course4Name" /></div>
+            <div class="se-field se-full"><label>Description</label><textarea id="se_course4Desc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 1</label><input type="text" id="se_course4Feat1" /></div>
+            <div class="se-field"><label>Feature 2</label><input type="text" id="se_course4Feat2" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Feature 3</label><input type="text" id="se_course4Feat3" /></div>
+            <div class="se-field"><label>Feature 4</label><input type="text" id="se_course4Feat4" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TRAINERS ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>👨‍🏫 Trainers Section</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>Section Tag</label><input type="text" id="se_trainersTag" /></div>
+            <div class="se-field"><label>Section Title</label><input type="text" id="se_trainersTitle" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Title Accent</label><input type="text" id="se_trainersTitleAccent" /></div>
+            <div class="se-field se-full"><label>Section Description</label><textarea id="se_trainersSub" rows="2"></textarea></div>
+          </div>
+          <hr class="se-divider"/>
+          <p class="se-section-label">Trainer 1 (Featured)</p>
+          <div class="se-row">
+            <div class="se-field"><label>Name</label><input type="text" id="se_trainer1Name" /></div>
+            <div class="se-field"><label>Role / Title</label><input type="text" id="se_trainer1Role" /></div>
+          </div>
+          <div class="se-row"><div class="se-field se-full"><label>Bio</label><textarea id="se_trainer1Bio" rows="2"></textarea></div></div>
+          <div class="se-row">
+            <div class="se-field"><label>Badge 1</label><input type="text" id="se_trainer1Badge1" /></div>
+            <div class="se-field"><label>Badge 2</label><input type="text" id="se_trainer1Badge2" /></div>
+            <div class="se-field"><label>Badge 3</label><input type="text" id="se_trainer1Badge3" /></div>
+          </div>
+          <hr class="se-divider"/>
+          <p class="se-section-label">Trainer 2</p>
+          <div class="se-row">
+            <div class="se-field"><label>Name</label><input type="text" id="se_trainer2Name" /></div>
+            <div class="se-field"><label>Role</label><input type="text" id="se_trainer2Role" /></div>
+          </div>
+          <div class="se-row"><div class="se-field se-full"><label>Bio</label><textarea id="se_trainer2Bio" rows="2"></textarea></div></div>
+          <div class="se-row">
+            <div class="se-field"><label>Badge 1</label><input type="text" id="se_trainer2Badge1" /></div>
+            <div class="se-field"><label>Badge 2</label><input type="text" id="se_trainer2Badge2" /></div>
+          </div>
+          <hr class="se-divider"/>
+          <p class="se-section-label">Trainer 3</p>
+          <div class="se-row">
+            <div class="se-field"><label>Name</label><input type="text" id="se_trainer3Name" /></div>
+            <div class="se-field"><label>Role</label><input type="text" id="se_trainer3Role" /></div>
+          </div>
+          <div class="se-row"><div class="se-field se-full"><label>Bio</label><textarea id="se_trainer3Bio" rows="2"></textarea></div></div>
+          <div class="se-row">
+            <div class="se-field"><label>Badge 1</label><input type="text" id="se_trainer3Badge1" /></div>
+            <div class="se-field"><label>Badge 2</label><input type="text" id="se_trainer3Badge2" /></div>
+          </div>
+          <hr class="se-divider"/>
+          <p class="se-section-label">Women-Owned Banner</p>
+          <div class="se-row">
+            <div class="se-field"><label>Banner Title</label><input type="text" id="se_womenBannerTitle" /></div>
+          </div>
+          <div class="se-row"><div class="se-field se-full"><label>Banner Text</label><textarea id="se_womenBannerText" rows="2"></textarea></div></div>
+        </div>
+      </div>
+
+      <!-- ===== TESTIMONIALS ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>⭐ Testimonials</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <p class="se-hint">Edit each review and reviewer name below.</p>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 1 Text</label><textarea id="se_test1Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 1 Name</label><input type="text" id="se_test1Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 2 Text</label><textarea id="se_test2Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 2 Name</label><input type="text" id="se_test2Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 3 Text</label><textarea id="se_test3Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 3 Name</label><input type="text" id="se_test3Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 4 Text</label><textarea id="se_test4Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 4 Name</label><input type="text" id="se_test4Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 5 Text</label><textarea id="se_test5Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 5 Name</label><input type="text" id="se_test5Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 6 Text</label><textarea id="se_test6Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 6 Name</label><input type="text" id="se_test6Name" /></div></div>
+          <hr class="se-divider"/>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Review 7 Text</label><textarea id="se_test7Text" rows="2"></textarea></div>
+          </div>
+          <div class="se-row"><div class="se-field"><label>Reviewer 7 Name</label><input type="text" id="se_test7Name" /></div></div>
+        </div>
+      </div>
+
+      <!-- ===== CTA SECTION ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>📣 Call-to-Action Section</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field"><label>CTA Headline</label><input type="text" id="se_ctaTitle" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>CTA Description</label><textarea id="se_ctaDesc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Call Button Text</label><input type="text" id="se_ctaBtnCall" /></div>
+            <div class="se-field"><label>WhatsApp Button Text</label><input type="text" id="se_ctaBtnWhatsapp" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Hours Text (bottom of CTA)</label><input type="text" id="se_ctaHours" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FOOTER ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>🦶 Footer</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <div class="se-row">
+            <div class="se-field se-full"><label>Footer Description Text</label><textarea id="se_footerDesc" rows="2"></textarea></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field"><label>Footer Badge 1</label><input type="text" id="se_footerBadge1" /></div>
+            <div class="se-field"><label>Footer Badge 2</label><input type="text" id="se_footerBadge2" /></div>
+            <div class="se-field"><label>Footer Badge 3</label><input type="text" id="se_footerBadge3" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Copyright Text</label><input type="text" id="se_footerCopyright" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SEO ===== -->
+      <div class="editor-accordion">
+        <div class="editor-accordion-header">
+          <span>🔍 SEO (Search Engine Settings)</span><span class="acc-arrow">▼</span>
+        </div>
+        <div class="editor-accordion-body">
+          <p class="se-hint">These settings control how your website appears in Google search results.</p>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Page Title (shown in browser tab &amp; Google)</label><input type="text" id="se_seoTitle" /></div>
+          </div>
+          <div class="se-row">
+            <div class="se-field se-full"><label>Meta Description (shown under your link in Google — keep under 160 characters)</label><textarea id="se_seoDesc" rows="3"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end editor-wrap -->
+
+    <!-- Floating Save Bar -->
+    <div class="se-save-bar">
+      <span id="seStatusBar"></span>
+      <button class="btn btn-primary" id="seSaveBtnFloat">💾 Save &amp; Publish</button>
+    </div>
+
+  </section>
+
+  </div><!-- end dashboard-main (moved here) -->
+
   <script src="admin-auth.js"></script>
   <script src="admin-dashboard.js"></script>
+  <script src="site-editor.js"></script>
 </body>
 </html>
