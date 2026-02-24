@@ -449,7 +449,7 @@ function switchSection(sectionId) {
     enquiries:    loadEnquiries,
     fleet:        loadFleet,
     instructors:  loadInstructors,
-    siteeditor:   () => { /* editor handles its own init via site-editor.js */ },
+    editor:       () => { /* editor handles its own init via admin-editor.js */ },
   };
   if (loaders[sectionId]) loaders[sectionId]();
 
