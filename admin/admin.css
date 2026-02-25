@@ -1364,3 +1364,97 @@ ul { list-style: none; }
   .editor-panel     { padding: 18px 16px; }
   .epanel-title     { font-size: 18px; }
 }
+
+/* ── DEFAULT RESTORE BUTTON ─────────────────────────────────── */
+.default-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+}
+
+.default-wrap input[type="text"],
+.default-wrap input[type="tel"],
+.default-wrap textarea {
+  border-radius: 10px 0 0 10px !important;
+  flex: 1;
+}
+
+.btn-restore-default {
+  flex-shrink: 0;
+  height: 44px;
+  width: 44px;
+  border: 1.5px solid var(--border);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  background: #f8f9ff;
+  color: var(--text-muted);
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  line-height: 1;
+  position: relative;
+  top: 0;
+}
+
+/* For textareas the button sits at the top-right corner */
+.default-wrap textarea ~ .btn-restore-default {
+  align-self: flex-start;
+  height: 44px;
+  border-radius: 0 10px 0 0;
+}
+
+.btn-restore-default:hover {
+  background: #fff3e0;
+  color: #e65100;
+  border-color: #ffb74d;
+}
+
+.btn-restore-default.restored {
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  border-color: #a5d6a7 !important;
+  font-size: 14px;
+}
+
+/* Tooltip showing the default value */
+.btn-restore-default::after {
+  content: attr(data-default-val);
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #1a1a2e;
+  color: white;
+  font-size: 12px;
+  font-family: var(--font-body, sans-serif);
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+}
+
+.btn-restore-default:hover::after {
+  opacity: 1;
+}
+
+/* Flash animation when a field is restored */
+@keyframes fieldRestored {
+  0%   { background: #fff9c4; border-color: #f9a825; }
+  100% { background: #fafbff; border-color: var(--border); }
+}
+.field-restored {
+  animation: fieldRestored 1.2s ease forwards;
+}
