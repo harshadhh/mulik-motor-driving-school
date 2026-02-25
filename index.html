@@ -11,9 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&family=Nunito:wght@400;600;700&family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&family=Montserrat:wght@600;700;800&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Site Settings Loader — must be first -->
-  <script src="js/site-settings.js"></script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,6 +44,8 @@
     .section-title { font-size: var(--fs-section, clamp(30px, 5vw, 52px)) !important; }
     .btn { font-size: var(--fs-btn, 16px) !important; }
   </style>
+  <!-- Site Settings: loads AFTER CSS to prevent variable corruption -->
+  <script src="js/site-settings.js" defer></script>
 </head>
 <body>
   <!-- ANNOUNCEMENT BAR -->
