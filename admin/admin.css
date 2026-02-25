@@ -1458,3 +1458,101 @@ ul { list-style: none; }
 .field-restored {
   animation: fieldRestored 1.2s ease forwards;
 }
+
+/* ── FONT SIZE SLIDERS ──────────────────────────────────────── */
+.size-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+.size-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--red) 0%, var(--border) 0%);
+  outline: none;
+  cursor: pointer;
+}
+.size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.size-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+.size-label {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--text-dark);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 6px;
+  min-width: 52px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ── BUTTON RADIUS PREVIEW ──────────────────────────────────── */
+.btn-radius-preview-row {
+  margin-top: 10px;
+}
+.btn-radius-preview {
+  padding: 10px 24px;
+  background: var(--red, #D32F2F);
+  color: white;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: default;
+  transition: border-radius 0.2s;
+}
+
+/* ── EPANEL SUBTITLE ────────────────────────────────────────── */
+.epanel-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 20px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── FONT PREVIEW BOX ───────────────────────────────────────── */
+.font-preview-box {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: #f8f9ff;
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  color: var(--text-dark);
+  line-height: 1.4;
+  transition: font-family 0.3s, font-size 0.2s;
+}
+
+/* ── SEO TIP ────────────────────────────────────────────────── */
+.seo-tip {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #5d4037;
+  margin-top: 16px;
+}
