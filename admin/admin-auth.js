@@ -8,7 +8,7 @@
 // For extra security, keep /admin/ out of your public sitemap.
 const ADMIN_CREDENTIALS = {
   username: 'mulikadmin',       // ← Change this
-  password: 'mulik@motor2024'   // ← Change this to something strong
+  password: 'mulik@motor2026'   // ← Change this to something strong
 };
 
 const SESSION_KEY = 'mulik_admin_session';
