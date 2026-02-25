@@ -449,7 +449,10 @@ function switchSection(sectionId) {
     enquiries:    loadEnquiries,
     fleet:        loadFleet,
     instructors:  loadInstructors,
-    editor:       () => { /* editor handles its own init via admin-editor.js */ },
+    editor:       () => {
+      // Re-run editor init every time user switches to this tab
+      if (typeof window.initEditor === 'function') window.initEditor();
+    },
   };
   if (loaders[sectionId]) loaders[sectionId]();
 
