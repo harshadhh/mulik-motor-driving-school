@@ -104,8 +104,14 @@
         <div class="trust-pill" data-s="trustPill4">383 Reviews</div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img-placeholder">
+    <div class="hero-visual" id="heroVisual">
+      <!-- Photo version (shown when hero image is uploaded) -->
+      <div class="hero-photo-wrap" id="heroPhotoWrap" style="display:none;">
+        <img id="heroPhoto" src="" alt="Mulik Motor Driving School" class="hero-photo" />
+        <div class="hero-photo-overlay"></div>
+      </div>
+      <!-- Default SVG (shown when no photo uploaded) -->
+      <div class="hero-img-placeholder" id="heroDefault">
         <div class="car-silhouette">
           <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" class="car-svg">
             <rect x="80" y="110" width="440" height="80" rx="12" fill="#1a1a2e"/>
@@ -123,7 +129,7 @@
             <rect x="484" y="148" width="36" height="20" rx="3" fill="#D32F2F"/>
           </svg>
         </div>
-        <div class="fleet-label">Our Training Fleet</div>
+        <div class="fleet-label" data-s="fleetLabel">Our Training Fleet</div>
       </div>
     </div>
   </section>
@@ -372,6 +378,42 @@
         <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week. I never thought I could drive but here I am!"</p><div class="reviewer">— Priya S., Vishrantwadi</div></div>
         <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best driving school in Pune. Ashish Sir is incredibly calm and never made me feel nervous. Got my license on the first attempt!"</p><div class="reviewer">— Rahul M., Alandi Road</div></div>
         <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"As a woman learner I was nervous, but the environment here is so welcoming and safe. Highly recommend to every woman looking to learn driving."</p><div class="reviewer">— Sneha K., Vishrantwadi</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-s="galleryTag">Our School</span>
+        <h2 class="section-title" data-s="galleryTitle">Life at <span class="text-accent">Mulik Motor</span></h2>
+        <p class="section-sub" data-s="gallerySub">Real moments from our training ground — our students, our cars, our campus.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="gallery-filters" id="galleryFilters">
+        <button class="gallery-filter-btn active" data-cat="all">All Photos</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-empty" id="galleryEmpty">
+          <div class="gallery-empty-icon">📷</div>
+          <p>Photos will appear here once uploaded from the admin panel.</p>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="gallery-lightbox" id="galleryLightbox" style="display:none;">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-inner">
+          <button class="lightbox-close" id="lightboxClose">✕</button>
+          <button class="lightbox-prev" id="lightboxPrev">‹</button>
+          <button class="lightbox-next" id="lightboxNext">›</button>
+          <img id="lightboxImg" src="" alt="" />
+          <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
       </div>
     </div>
   </section>
