@@ -31,6 +31,7 @@
       <a href="#" class="nav-item" data-section="fleet"><span class="nav-icon">🚗</span> Fleet / Cars</a>
       <a href="#" class="nav-item" data-section="instructors"><span class="nav-icon">👨‍🏫</span> Instructors</a>
       <div class="sidebar-divider"></div>
+      <a href="#" class="nav-item" data-section="gallery"><span class="nav-icon">🖼️</span> Gallery</a>
       <a href="#" class="nav-item nav-item-editor" data-section="editor"><span class="nav-icon">🎨</span> Website Editor</a>
     </nav>
     <div class="sidebar-footer">
@@ -457,6 +458,61 @@
       </div>
     </section>
 
+    <!-- ===== GALLERY MANAGER ===== -->
+    <section class="dash-section" id="section-gallery">
+      <div class="section-title-bar">
+        <h2>🖼️ Gallery Manager</h2>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <button class="btn btn-outline btn-sm" onclick="window.open('../#gallery','_blank')">👁 Preview Gallery</button>
+        </div>
+      </div>
+
+      <!-- ── CATEGORIES ── -->
+      <div class="gallery-admin-layout">
+        <div class="gallery-sidebar-panel">
+          <div class="gallery-panel-title">📁 Categories</div>
+          <p class="gallery-panel-desc">Organise your photos into categories. Visitors can filter by category on the website.</p>
+          <div class="gallery-cat-list" id="galleryCatList"></div>
+          <div class="gallery-add-cat-row">
+            <input type="text" id="newCatInput" class="gallery-cat-input" placeholder="e.g. Students, Cars, Campus..." />
+            <button class="btn btn-primary btn-sm" id="addCatBtn">+ Add</button>
+          </div>
+          <p class="gallery-cat-hint">💡 Click a category to upload photos to it</p>
+        </div>
+
+        <!-- ── UPLOAD & PHOTOS ── -->
+        <div class="gallery-main-panel">
+          <div class="gallery-panel-title">
+            📸 Photos in: <span id="activeCatLabel" style="color:var(--red)">Select a category →</span>
+          </div>
+
+          <!-- Upload zone -->
+          <div class="gallery-upload-zone" id="galleryUploadZone" style="display:none;">
+            <input type="file" id="galleryFileInput" accept="image/*" multiple style="display:none;" />
+            <label for="galleryFileInput" class="gallery-upload-label">
+              <div class="gallery-upload-icon">📤</div>
+              <div class="gallery-upload-text">
+                <strong>Click to upload photos</strong><br/>
+                <span>JPG, PNG, WebP — Recommended: 1200×900px or wider (4:3 ratio works best)</span>
+              </div>
+            </label>
+            <div class="gallery-upload-progress" id="galleryUploadProgress" style="display:none;">
+              <div class="gallery-progress-bar"><div class="gallery-progress-fill" id="galleryProgressFill"></div></div>
+              <span id="galleryProgressText">Uploading...</span>
+            </div>
+          </div>
+
+          <!-- Photo grid -->
+          <div class="gallery-photo-grid" id="galleryPhotoGrid">
+            <div class="gallery-select-hint" id="gallerySelectHint">
+              <div style="font-size:48px;margin-bottom:12px;">👈</div>
+              <p>Select or create a category first</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- end gallery section -->
+
     <!-- ===== WEBSITE EDITOR ===== -->
     <section class="dash-section" id="section-editor">
       <div class="section-title-bar">
@@ -481,6 +537,7 @@
       <!-- ─── EDITOR TABS ─── -->
       <div class="editor-tabs">
         <button class="editor-tab active" data-panel="identity">🏫 Identity</button>
+        <button class="editor-tab" data-panel="herophoto">🖼️ Hero Photo</button>
         <button class="editor-tab" data-panel="colors">🎨 Colors</button>
         <button class="editor-tab" data-panel="fonts">✍️ Fonts</button>
         <button class="editor-tab" data-panel="contact">📞 Contact</button>
@@ -492,6 +549,7 @@
         <button class="editor-tab" data-panel="cta">📣 CTA</button>
         <button class="editor-tab" data-panel="footer">🦶 Footer</button>
         <button class="editor-tab" data-panel="nav">🔗 Nav</button>
+        <button class="editor-tab" data-panel="gallerytext">🖼️ Gallery</button>
         <button class="editor-tab" data-panel="seo">🔍 SEO</button>
       </div>
 
@@ -519,6 +577,48 @@
           <div class="efield efield-full">
             <label>ImgBB API Key <span class="efield-hint">Free at imgbb.com — paste key here to upload photos permanently</span></label>
             <input type="text" id="imgbbApiKey" placeholder="Paste your ImgBB API key here (optional)" />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ─── PANEL: HERO PHOTO ─── -->
+      <div class="editor-panel" id="epanel-herophoto">
+        <div class="epanel-title">🖼️ Hero Section Photo</div>
+        <p class="epanel-desc">Upload a real photo of your school, cars or students to replace the default car illustration in the hero section.</p>
+
+        <div class="hero-photo-guide">
+          <div class="hero-photo-guide-icon">📐</div>
+          <div>
+            <strong>Perfect dimensions: 1920 × 600 px</strong> (3.2:1 landscape ratio)<br/>
+            <span style="color:var(--text-muted);font-size:13px;">Also works great: 1280×400px, 1600×500px. Minimum: 800px wide. Keep important content in the centre.</span>
+          </div>
+        </div>
+
+        <!-- Upload zone -->
+        <div class="hero-img-upload-zone" id="heroImgUploadZone">
+          <input type="file" id="heroImgFileInput" accept="image/*" style="display:none;" />
+          <label for="heroImgFileInput" class="hero-img-upload-label" id="heroImgUploadLabel">
+            <div class="hero-img-upload-icon">🖼️</div>
+            <div>
+              <strong>Click to upload hero photo</strong><br/>
+              <span>JPG or PNG — will replace the car illustration</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Preview -->
+        <div class="hero-img-preview-wrap" id="heroImgPreviewWrap" style="display:none;">
+          <div class="hero-img-preview-label">Preview (how it will look on your website):</div>
+          <div class="hero-img-preview-frame">
+            <img id="heroImgPreview" src="" alt="Hero preview" />
+            <div class="hero-img-preview-overlay">
+              <span>Hero Section</span>
+            </div>
+          </div>
+          <div class="hero-img-preview-actions">
+            <button class="btn btn-cancel btn-sm" id="heroImgRemoveBtn">🗑 Remove Photo (use illustration)</button>
+            <label for="heroImgFileInput" class="btn btn-outline btn-sm" style="cursor:pointer;">📤 Change Photo</label>
           </div>
         </div>
       </div>
@@ -1094,6 +1194,19 @@
           </div>
         </div>
       </div>
+      <!-- ─── PANEL: GALLERY TEXT ─── -->
+      <div class="editor-panel" id="epanel-gallerytext">
+        <div class="epanel-title">🖼️ Gallery Section Text</div>
+        <p class="epanel-desc">Edit the heading and description shown above the photo gallery on your website.</p>
+        <div class="efield-row">
+          <div class="efield"><label>Section Tag <span class="efield-hint">(small label above title)</span></label><input type="text" data-field="galleryTag" placeholder="Our School" /></div>
+          <div class="efield"><label>Section Title</label><input type="text" data-field="galleryTitle" placeholder="Life at Mulik Motor" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Description</label><textarea data-field="gallerySub" rows="2" placeholder="Real moments from our training ground..."></textarea></div>
+        </div>
+      </div>
+
       <!-- ─── PANEL: SEO ─── -->
       <div class="editor-panel" id="epanel-seo">
         <div class="epanel-title">🔍 SEO — Search Engine Settings</div>
@@ -1119,5 +1232,6 @@
   <script src="admin-auth.js"></script>
   <script src="admin-dashboard.js"></script>
   <script src="admin-editor.js"></script>
+  <script src="gallery-admin.js"></script>
 </body>
 </html>
