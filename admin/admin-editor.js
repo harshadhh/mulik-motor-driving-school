@@ -322,6 +322,48 @@
       trainer3Initial: 'MG',
       seoTitle:        'Mulik Motor Driving School | Government-Approved | Vishrantwadi, Pune',
       seoDescription:  "Mulik Motor Driving School — Pune's Premier Government-Approved Driving School in Vishrantwadi. 4.9★ rated, Women-Owned, Expert Trainers.",
+      // Font sizes & shapes
+      fontSizeHero:    '90px',
+      fontSizeSection: '48px',
+      fontSizeBody:    '16px',
+      fontSizeBtn:     '16px',
+      btnRadius:       '999px',
+      cardRadius:      '12px',
+      // Courses
+      coursesTag:   'What We Offer',
+      coursesTitle: 'Courses Built for Every Kind of Learner',
+      coursesSub:   "Whether you're a complete beginner or need a refresher — we have a course designed for you.",
+      course1Name: 'Beginner Driving Course', course1Badge: 'Most Popular',
+      course1Desc: '20-day comprehensive training program — from theory to confident road driving. Perfect for first-time drivers.',
+      course1F1: '✓ Theory & Road Safety Classes', course1F2: '✓ Field Practice with Dual Controls',
+      course1F3: '✓ Traffic & Signal Training',    course1F4: '✓ Reverse & Parking Mastery', course1F5: '✓ RTO Test Preparation',
+      course2Name: 'License Assistance', course2Icon: '📋',
+      course2Desc: "Complete end-to-end help for your Learner's and Permanent Driving License — zero confusion, zero running around.",
+      course2F1: '✓ Document Preparation Guide',    course2F2: '✓ Online RTO Form Filling',
+      course2F3: "✓ Learner's License Test Prep",   course2F4: '✓ LL to DL Upgrade Support',
+      course3Name: 'Refresher Lessons', course3Icon: '🔄',
+      course3Desc: 'Already have a license but lost confidence? Our refresher course gets you back on the road safely.',
+      course3F1: '✓ Custom Pace Training',          course3F2: '✓ Highway Confidence Building',
+      course3F3: '✓ Parking in Tight Spaces',       course3F4: '✓ Night Driving Basics',
+      course4Name: 'Mechanical Workshop', course4Icon: '🔧',
+      course4Desc: 'Learn basic car maintenance every driver should know — from tyre changes to engine checks.',
+      course4F1: '✓ Tyre Change & Pressure Check',  course4F2: '✓ Engine Oil & Fluids Basics',
+      course4F3: '✓ Emergency Breakdown Tips',       course4F4: '✓ Dashboard Warning Lights',
+      // Reviews
+      reviewsTag: 'What Our Students Say', reviewsTitle: 'Real Stories from Real Drivers',
+      review1Text: '"From day one I felt so comfortable. Mulik Sir is extremely patient and made me confident within a week."', review1Name: '— Priya S., Vishrantwadi', review1Stars: '⭐⭐⭐⭐⭐',
+      review2Text: '"Best driving school in Pune. Ashish Sir is incredibly calm. Got my license on the first attempt!"',       review2Name: '— Rahul M., Alandi Road',    review2Stars: '⭐⭐⭐⭐⭐',
+      review3Text: '"As a woman learner I was nervous, but the environment here is so welcoming and safe."',                   review3Name: '— Sneha K., Vishrantwadi',  review3Stars: '⭐⭐⭐⭐⭐',
+      review4Text: '"The mechanical workshop session was a bonus I did not expect! Very practical school."',                   review4Name: '— Vikram P., Hadapsar',     review4Stars: '⭐⭐⭐⭐⭐',
+      review5Text: '"Mangesh Sir's teaching is excellent. Very systematic, very patient. 5 stars without question."',        review5Name: '— Anita R., Pune',          review5Stars: '⭐⭐⭐⭐⭐',
+      review6Text: '"I was scared of traffic but after 20 days with Mulik Motor, I'm driving daily without any stress."',    review6Name: '— Suresh D., Vishrantwadi', review6Stars: '⭐⭐⭐⭐⭐',
+      review7Text: '"The RTO documentation process was completely stress-free. They handled everything. 100% recommend!"',     review7Name: '— Meera T., Alandi Road',   review7Stars: '⭐⭐⭐⭐⭐',
+      // Footer
+      footerBadge1: '🏛️ Govt. Approved', footerBadge2: '♀ Women-Owned', footerBadge3: '⭐ 4.9 Rated',
+      socialFacebook: '', socialInstagram: '', socialYouTube: '', socialGoogleReview: '',
+      // Nav
+      nav1Text: 'Our Courses', nav2Text: 'License Process', nav3Text: 'About Us', nav4Text: 'Contact', navCtaText: 'Enroll Now',
+      announcementText: '', announcementColor: '#D32F2F',
     };
 
     document.querySelectorAll('input[type="text"][data-field], input[type="tel"][data-field], textarea[data-field]').forEach(input => {
@@ -416,4 +458,46 @@
   // Also init when section is switched to
   window.initEditor = init;
 
+})();
+
+// ── SLIDER SETUP (font sizes, border radius) ──────────────────
+(function setupSliders() {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.size-slider[data-field]').forEach(slider => {
+      const key    = slider.getAttribute('data-field');
+      const label  = document.querySelector(`[data-size-label="${key}"]`);
+
+      // Load saved value
+      const saved = (function() {
+        try { const s = localStorage.getItem('mulik_site_settings'); return s ? JSON.parse(s) : {}; } catch(e) { return {}; }
+      })();
+      if (saved[key] !== undefined) {
+        slider.value = parseInt(saved[key]);
+        if (label) label.textContent = saved[key] + 'px';
+      }
+
+      // Update gradient fill + label live
+      function updateSlider() {
+        const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--red) ${pct}%, #e0e0e0 ${pct}%)`;
+        if (label) label.textContent = slider.value + 'px';
+        // Live preview for button radius
+        if (key === 'btnRadius') {
+          const preview = document.getElementById('btnRadiusPreview');
+          if (preview) preview.style.borderRadius = slider.value + 'px';
+        }
+      }
+
+      updateSlider();
+      slider.addEventListener('input', () => {
+        updateSlider();
+        const patch = {}; patch[key] = slider.value + 'px';
+        // Save immediately
+        try {
+          const cur = JSON.parse(localStorage.getItem('mulik_site_settings') || '{}');
+          localStorage.setItem('mulik_site_settings', JSON.stringify(Object.assign(cur, patch)));
+        } catch(e) {}
+      });
+    });
+  });
 })();
