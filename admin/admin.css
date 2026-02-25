@@ -1123,14 +1123,18 @@ ul { list-style: none; }
 
 /* ── EDITOR PANELS ──────────────────────────────────────────── */
 .editor-panel {
-  display: none;
+  display: none !important;
   background: white;
   border: 1.5px solid var(--border);
   border-radius: 16px;
   padding: 28px;
   animation: fadeInPanel 0.2s ease;
 }
-.editor-panel.active { display: block; }
+.editor-panel.active,
+.editor-panel[style*="display: block"],
+.editor-panel[style*="display:block"] {
+  display: block !important;
+}
 
 @keyframes fadeInPanel {
   from { opacity: 0; transform: translateY(6px); }
