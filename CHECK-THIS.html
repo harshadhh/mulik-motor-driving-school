@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>File Check</title>
+<style>body{font-family:sans-serif;padding:20px;} .ok{color:green} .fail{color:red} .warn{color:orange}</style>
+</head>
+<body>
+<h2>🔍 Mulik Motor — File Load Diagnostic</h2>
+<p>Open this page on your live website. It tells you exactly which files are missing.</p>
+<div id="results"></div>
+<script>
+var files = [
+  'css/style.css',
+  'js/script.js', 
+  'js/site-settings.js',
+  'js/site-loader.js',
+  'admin/admin.css',
+  'admin/admin-editor.js',
+  'admin/gallery-admin.js',
+  'admin/dashboard.html'
+];
+var r = document.getElementById('results');
+r.innerHTML = '<p><strong>Base URL:</strong> ' + window.location.href + '</p>';
+var results = '';
+files.forEach(function(f) {
+  fetch(f).then(function(res) {
+    var status = res.ok ? '✅ OK (' + res.status + ')' : '❌ NOT FOUND (' + res.status + ')';
+    var cls = res.ok ? 'ok' : 'fail';
+    results += '<p class="'+cls+'"><strong>'+f+'</strong>: ' + status + '</p>';
+    r.innerHTML = '<p><strong>Base URL:</strong> ' + window.location.href + '</p>' + results;
+  }).catch(function(e) {
+    results += '<p class="fail"><strong>'+f+'</strong>: ❌ ERROR — ' + e + '</p>';
+    r.innerHTML = '<p><strong>Base URL:</strong> ' + window.location.href + '</p>' + results;
+  });
+});
+</script>
+</body>
+</html>
