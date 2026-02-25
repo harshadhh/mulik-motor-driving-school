@@ -486,9 +486,12 @@
         <button class="editor-tab" data-panel="contact">📞 Contact</button>
         <button class="editor-tab" data-panel="hero">🦸 Hero</button>
         <button class="editor-tab" data-panel="stats">📊 Stats</button>
+        <button class="editor-tab" data-panel="courses">📚 Courses</button>
         <button class="editor-tab" data-panel="trainers">👨‍🏫 Trainers</button>
+        <button class="editor-tab" data-panel="testimonials">⭐ Reviews</button>
         <button class="editor-tab" data-panel="cta">📣 CTA</button>
         <button class="editor-tab" data-panel="footer">🦶 Footer</button>
+        <button class="editor-tab" data-panel="nav">🔗 Nav</button>
         <button class="editor-tab" data-panel="seo">🔍 SEO</button>
       </div>
 
@@ -596,21 +599,25 @@
 
       <!-- ─── PANEL: FONTS ─── -->
       <div class="editor-panel" id="epanel-fonts">
-        <div class="epanel-title">✍️ Website Fonts</div>
-        <p class="epanel-desc">Choose the fonts used across your website. The headline font is for big titles. The body font is for paragraphs and regular text.</p>
+        <div class="epanel-title">✍️ Fonts &amp; Sizes</div>
+        <p class="epanel-desc">Choose fonts and sizes for your website. Changes apply across the entire site instantly.</p>
         <div class="efield-row">
           <div class="efield">
-            <label>Headline Font <span class="efield-hint">(for big titles and headings)</span></label>
+            <label>Headline Font <span class="efield-hint">(big titles &amp; headings)</span></label>
             <select data-field="fontHead">
               <option value="Barlow Condensed">Barlow Condensed — Bold &amp; Strong (Current)</option>
               <option value="Oswald">Oswald — Clean &amp; Impactful</option>
               <option value="Montserrat">Montserrat — Modern &amp; Geometric</option>
               <option value="Raleway">Raleway — Elegant &amp; Stylish</option>
+              <option value="Anton">Anton — Ultra Bold</option>
+              <option value="Bebas Neue">Bebas Neue — All Caps Impact</option>
+              <option value="Poppins">Poppins — Rounded &amp; Modern</option>
+              <option value="Roboto Condensed">Roboto Condensed — Compact &amp; Clean</option>
             </select>
-            <div class="font-preview-box" id="headFontPreview" style="font-family:'Barlow Condensed',sans-serif;">Aa Bb Cc — Drive With Confidence</div>
+            <div class="font-preview-box" id="headFontPreview" style="font-family:'Barlow Condensed',sans-serif;font-size:28px;">Drive With Confidence — Mulik Motor</div>
           </div>
           <div class="efield">
-            <label>Body Font <span class="efield-hint">(for paragraphs and descriptions)</span></label>
+            <label>Body Font <span class="efield-hint">(paragraphs &amp; descriptions)</span></label>
             <select data-field="fontBody">
               <option value="DM Sans">DM Sans — Clean &amp; Friendly (Current)</option>
               <option value="Inter">Inter — Modern &amp; Minimal</option>
@@ -619,8 +626,64 @@
               <option value="Poppins">Poppins — Rounded &amp; Warm</option>
               <option value="Lato">Lato — Humanist &amp; Warm</option>
               <option value="Nunito">Nunito — Friendly &amp; Soft</option>
+              <option value="Source Sans Pro">Source Sans Pro — Professional</option>
             </select>
             <div class="font-preview-box" id="bodyFontPreview" style="font-size:14px;font-family:'DM Sans',sans-serif;">The quick brown fox jumps over the lazy dog. Learn driving with confidence at Mulik Motor.</div>
+          </div>
+        </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">📐 Font Sizes</div>
+        <div class="efield-row">
+          <div class="efield">
+            <label>Hero Title Size <span class="efield-hint">(default: 90px on desktop)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="fontSizeHero" min="48" max="130" step="2" value="90" class="size-slider" />
+              <span class="size-label" data-size-label="fontSizeHero">90px</span>
+            </div>
+          </div>
+          <div class="efield">
+            <label>Section Title Size <span class="efield-hint">(default: 48px)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="fontSizeSection" min="28" max="72" step="2" value="48" class="size-slider" />
+              <span class="size-label" data-size-label="fontSizeSection">48px</span>
+            </div>
+          </div>
+        </div>
+        <div class="efield-row">
+          <div class="efield">
+            <label>Body Text Size <span class="efield-hint">(default: 16px)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="fontSizeBody" min="13" max="20" step="1" value="16" class="size-slider" />
+              <span class="size-label" data-size-label="fontSizeBody">16px</span>
+            </div>
+          </div>
+          <div class="efield">
+            <label>Button Text Size <span class="efield-hint">(default: 16px)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="fontSizeBtn" min="12" max="22" step="1" value="16" class="size-slider" />
+              <span class="size-label" data-size-label="fontSizeBtn">16px</span>
+            </div>
+          </div>
+        </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🔲 Button Shape</div>
+        <div class="efield-row">
+          <div class="efield">
+            <label>Button Border Radius <span class="efield-hint">(0 = square, 999 = fully round)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="btnRadius" min="0" max="999" step="4" value="999" class="size-slider" />
+              <span class="size-label" data-size-label="btnRadius">999px</span>
+            </div>
+            <div class="btn-radius-preview-row">
+              <button class="btn-radius-preview" id="btnRadiusPreview" style="border-radius:999px;">Enroll Now</button>
+            </div>
+          </div>
+          <div class="efield">
+            <label>Card Border Radius <span class="efield-hint">(0 = sharp, 24 = very rounded)</span></label>
+            <div class="size-slider-wrap">
+              <input type="range" data-field="cardRadius" min="0" max="28" step="2" value="12" class="size-slider" />
+              <span class="size-label" data-size-label="cardRadius">12px</span>
+            </div>
           </div>
         </div>
       </div>
@@ -741,6 +804,219 @@
         </div>
       </div>
 
+
+      <!-- ─── PANEL: COURSES ─── -->
+      <div class="editor-panel" id="epanel-courses">
+        <div class="epanel-title">📚 Courses Section</div>
+        <p class="epanel-desc">Edit the courses your school offers. Each course has a name, description, and feature list.</p>
+
+        <div class="epanel-subtitle">📋 Section Header</div>
+        <div class="efield-row">
+          <div class="efield"><label>Section Tag <span class="efield-hint">(small label above title)</span></label><input type="text" data-field="coursesTag" placeholder="What We Offer" /></div>
+          <div class="efield"><label>Section Title</label><input type="text" data-field="coursesTitle" placeholder="Courses Built for Every Kind of Learner" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Section Description</label><textarea data-field="coursesSub" rows="2" placeholder="Whether you're a complete beginner or need a refresher..."></textarea></div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🚗 Course 1 — Featured (Most Popular)</div>
+        <div class="efield-row">
+          <div class="efield"><label>Course Name</label><input type="text" data-field="course1Name" placeholder="Beginner Driving Course" /></div>
+          <div class="efield"><label>Badge Label <span class="efield-hint">(e.g. "Most Popular")</span></label><input type="text" data-field="course1Badge" placeholder="Most Popular" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Description</label><textarea data-field="course1Desc" rows="2" placeholder="20-day comprehensive training program..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 1</label><input type="text" data-field="course1F1" placeholder="✓ Theory &amp; Road Safety Classes" /></div>
+          <div class="efield"><label>Feature 2</label><input type="text" data-field="course1F2" placeholder="✓ Field Practice with Dual Controls" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 3</label><input type="text" data-field="course1F3" placeholder="✓ Traffic &amp; Signal Training" /></div>
+          <div class="efield"><label>Feature 4</label><input type="text" data-field="course1F4" placeholder="✓ Reverse &amp; Parking Mastery" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Feature 5</label><input type="text" data-field="course1F5" placeholder="✓ RTO Test Preparation" /></div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">📋 Course 2</div>
+        <div class="efield-row">
+          <div class="efield"><label>Course Name</label><input type="text" data-field="course2Name" placeholder="License Assistance" /></div>
+          <div class="efield"><label>Course Icon <span class="efield-hint">(emoji)</span></label><input type="text" data-field="course2Icon" placeholder="📋" maxlength="4" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Description</label><textarea data-field="course2Desc" rows="2" placeholder="Complete end-to-end help for your Learner's and Permanent License..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 1</label><input type="text" data-field="course2F1" placeholder="✓ Document Preparation Guide" /></div>
+          <div class="efield"><label>Feature 2</label><input type="text" data-field="course2F2" placeholder="✓ Online RTO Form Filling" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 3</label><input type="text" data-field="course2F3" placeholder="✓ Learner's License Test Prep" /></div>
+          <div class="efield"><label>Feature 4</label><input type="text" data-field="course2F4" placeholder="✓ LL to DL Upgrade Support" /></div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🔄 Course 3</div>
+        <div class="efield-row">
+          <div class="efield"><label>Course Name</label><input type="text" data-field="course3Name" placeholder="Refresher Lessons" /></div>
+          <div class="efield"><label>Course Icon <span class="efield-hint">(emoji)</span></label><input type="text" data-field="course3Icon" placeholder="🔄" maxlength="4" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Description</label><textarea data-field="course3Desc" rows="2" placeholder="Already have a license but lost confidence?..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 1</label><input type="text" data-field="course3F1" placeholder="✓ Custom Pace Training" /></div>
+          <div class="efield"><label>Feature 2</label><input type="text" data-field="course3F2" placeholder="✓ Highway Confidence Building" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 3</label><input type="text" data-field="course3F3" placeholder="✓ Parking in Tight Spaces" /></div>
+          <div class="efield"><label>Feature 4</label><input type="text" data-field="course3F4" placeholder="✓ Night Driving Basics" /></div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🔧 Course 4</div>
+        <div class="efield-row">
+          <div class="efield"><label>Course Name</label><input type="text" data-field="course4Name" placeholder="Mechanical Workshop" /></div>
+          <div class="efield"><label>Course Icon <span class="efield-hint">(emoji)</span></label><input type="text" data-field="course4Icon" placeholder="🔧" maxlength="4" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Description</label><textarea data-field="course4Desc" rows="2" placeholder="Learn basic car maintenance every driver should know..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 1</label><input type="text" data-field="course4F1" placeholder="✓ Tyre Change &amp; Pressure Check" /></div>
+          <div class="efield"><label>Feature 2</label><input type="text" data-field="course4F2" placeholder="✓ Engine Oil &amp; Fluids Basics" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Feature 3</label><input type="text" data-field="course4F3" placeholder="✓ Emergency Breakdown Tips" /></div>
+          <div class="efield"><label>Feature 4</label><input type="text" data-field="course4F4" placeholder="✓ Dashboard Warning Lights" /></div>
+        </div>
+      </div>
+
+      <!-- ─── PANEL: TESTIMONIALS ─── -->
+      <div class="editor-panel" id="epanel-testimonials">
+        <div class="epanel-title">⭐ Student Reviews</div>
+        <p class="epanel-desc">Edit the student testimonials shown in the scrolling reviews section. All 7 reviews are fully editable.</p>
+
+        <div class="epanel-subtitle">Review 1</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review1Text" rows="2" placeholder="From day one I felt so comfortable..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review1Name" placeholder="— Priya S., Vishrantwadi" /></div>
+          <div class="efield"><label>Star Rating <span class="efield-hint">(shown as ⭐ emojis)</span></label>
+            <select data-field="review1Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 2</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review2Text" rows="2" placeholder="Best driving school in Pune..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review2Name" placeholder="— Rahul M., Alandi Road" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review2Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 3</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review3Text" rows="2" placeholder="As a woman learner I was nervous..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review3Name" placeholder="— Sneha K., Vishrantwadi" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review3Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 4</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review4Text" rows="2" placeholder="The mechanical workshop session was a bonus..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review4Name" placeholder="— Vikram P., Hadapsar" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review4Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 5</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review5Text" rows="2" placeholder="Mangesh Sir's teaching is excellent..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review5Name" placeholder="— Anita R., Pune" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review5Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 6</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review6Text" rows="2" placeholder="I was scared of traffic but after 20 days..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review6Name" placeholder="— Suresh D., Vishrantwadi" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review6Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">Review 7</div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Review Text</label><textarea data-field="review7Text" rows="2" placeholder="Very professional school..."></textarea></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Reviewer Name</label><input type="text" data-field="review7Name" placeholder="— Meera T., Alandi Road" /></div>
+          <div class="efield"><label>Star Rating</label>
+            <select data-field="review7Stars">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3 stars)</option>
+            </select>
+          </div>
+        </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">📋 Section Title</div>
+        <div class="efield-row">
+          <div class="efield"><label>Section Tag</label><input type="text" data-field="reviewsTag" placeholder="What Our Students Say" /></div>
+          <div class="efield"><label>Section Title</label><input type="text" data-field="reviewsTitle" placeholder="Hear it from real students" /></div>
+        </div>
+      </div>
       <!-- ─── PANEL: CTA ─── -->
       <div class="editor-panel" id="epanel-cta">
         <div class="epanel-title">📣 Call-to-Action Section <span class="efield-hint">(the big red section before contact)</span></div>
@@ -763,13 +1039,61 @@
       <div class="editor-panel" id="epanel-footer">
         <div class="epanel-title">🦶 Footer</div>
         <div class="efield-row">
-          <div class="efield efield-full"><label>Footer Description <span class="efield-hint">(short text below logo in footer)</span></label><textarea data-field="footerDesc" rows="2"></textarea></div>
+          <div class="efield efield-full"><label>Footer Description <span class="efield-hint">(short text below logo)</span></label><textarea data-field="footerDesc" rows="2"></textarea></div>
         </div>
         <div class="efield-row">
           <div class="efield efield-full"><label>Copyright Text</label><input type="text" data-field="footerCopyright" placeholder="© 2025 Mulik Motor Driving School. All rights reserved." /></div>
         </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🏷️ Trust Badges (shown in footer)</div>
+        <div class="efield-row">
+          <div class="efield"><label>Badge 1</label><input type="text" data-field="footerBadge1" placeholder="🏛️ Govt. Approved" /></div>
+          <div class="efield"><label>Badge 2</label><input type="text" data-field="footerBadge2" placeholder="♀ Women-Owned" /></div>
+          <div class="efield"><label>Badge 3</label><input type="text" data-field="footerBadge3" placeholder="⭐ 4.9 Rated" /></div>
+        </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">🔗 Social Media Links <span class="efield-hint">(leave blank to hide)</span></div>
+        <div class="efield-row">
+          <div class="efield"><label>Facebook URL</label><input type="text" data-field="socialFacebook" placeholder="https://facebook.com/yourbusiness" /></div>
+          <div class="efield"><label>Instagram URL</label><input type="text" data-field="socialInstagram" placeholder="https://instagram.com/yourbusiness" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>YouTube URL</label><input type="text" data-field="socialYouTube" placeholder="https://youtube.com/@yourbusiness" /></div>
+          <div class="efield"><label>Google Maps Review URL</label><input type="text" data-field="socialGoogleReview" placeholder="https://g.page/r/..." /></div>
+        </div>
       </div>
 
+
+      <!-- ─── PANEL: NAV ─── -->
+      <div class="editor-panel" id="epanel-nav">
+        <div class="epanel-title">🔗 Navigation &amp; Header</div>
+        <p class="epanel-desc">Edit the menu links shown in the header navigation bar.</p>
+        <div class="efield-row">
+          <div class="efield"><label>Nav Link 1 Text</label><input type="text" data-field="nav1Text" placeholder="Our Courses" /></div>
+          <div class="efield"><label>Nav Link 2 Text</label><input type="text" data-field="nav2Text" placeholder="License Process" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield"><label>Nav Link 3 Text</label><input type="text" data-field="nav3Text" placeholder="About Us" /></div>
+          <div class="efield"><label>Nav Link 4 Text</label><input type="text" data-field="nav4Text" placeholder="Contact" /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Header CTA Button Text <span class="efield-hint">(the red button in the header)</span></label><input type="text" data-field="navCtaText" placeholder="Enroll Now" /></div>
+        </div>
+        <div class="epanel-divider"></div>
+        <div class="epanel-subtitle">📢 Announcement Bar <span class="efield-hint">(optional — shows a thin bar above the header)</span></div>
+        <div class="efield-row">
+          <div class="efield efield-full"><label>Announcement Text <span class="efield-hint">(leave empty to hide)</span></label><input type="text" data-field="announcementText" placeholder="🎉 New batch starting March 1st — Limited seats! Call now to enroll." /></div>
+        </div>
+        <div class="efield-row">
+          <div class="efield">
+            <label>Announcement Bar Color</label>
+            <div class="color-picker-wrap">
+              <input type="color" data-field="announcementColor" value="#D32F2F" />
+              <span class="color-hex-label" data-hex="announcementColor">#D32F2F</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- ─── PANEL: SEO ─── -->
       <div class="editor-panel" id="epanel-seo">
         <div class="epanel-title">🔍 SEO — Search Engine Settings</div>
