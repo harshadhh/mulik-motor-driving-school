@@ -449,6 +449,9 @@ function switchSection(sectionId) {
     enquiries:    loadEnquiries,
     fleet:        loadFleet,
     instructors:  loadInstructors,
+    gallery:      () => {
+      if (typeof window.initGalleryAdmin === 'function') window.initGalleryAdmin();
+    },
     editor:       () => {
       // Re-run editor init every time user switches to this tab
       if (typeof window.initEditor === 'function') window.initEditor();
