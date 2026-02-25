@@ -263,6 +263,125 @@
     });
   }
 
+  // ── DEFAULT VALUE RESTORE BUTTONS ─────────────────────────────
+  // Reads defaults from site-settings.js (window.MulikSettings.DEFAULTS)
+  // and injects a small "↺ Default" button next to every text field.
+  // Clicking it restores the original value and auto-saves instantly.
+  function setupDefaultButtons() {
+    // Wait a tick to ensure window.MulikSettings is loaded from site-settings.js
+    // (it's loaded on the public site, not admin — so we use the DEFAULTS object
+    // embedded directly in admin-editor.js as the source of truth)
+    const DEFAULTS = {
+      schoolName:      'Mulik Motor',
+      schoolTagline:   'Driving School',
+      schoolInitial:   'M',
+      phone:           '+91XXXXXXXXXX',
+      whatsapp:        '91XXXXXXXXXX',
+      address:         'Vishrantwadi, Alandi Road, Pune, Maharashtra – 411015',
+      hours:           '7:00 AM – 9:00 PM',
+      hoursLabel:      'Monday – Sunday',
+      mapEmbed:        '',
+      heroBadge:       'Government Approved · RTO Certified',
+      heroTitle1:      'Drive with',
+      heroAccent:      'Experts.',
+      heroTitle2:      'Learn with',
+      heroOutline:     'Confidence.',
+      heroSub:         "Pune's premier driving school in Vishrantwadi — building skilled, confident drivers for over a decade. Trusted by 380+ students.",
+      heroCTA1:        'Call Mulik Sir Now',
+      heroCTA2:        'View Courses →',
+      trustPill1:      '⭐ 4.9 / 5',
+      trustPill2:      '👩 Women-Owned',
+      trustPill3:      '🏛️ Govt. Approved',
+      trustPill4:      '383 Reviews',
+      stat1Num:        '383',
+      stat1Label:      '5-Star Reviews',
+      stat2Num:        '380',
+      stat2Label:      'Success Stories',
+      stat3Num:        '10+',
+      stat3Label:      'Years of Experience',
+      stat4Num:        '4.9★',
+      stat4Label:      'Google Rating',
+      ctaTitle:        'Ready to Start Your Journey?',
+      ctaSubtext:      'Join 380+ confident drivers who learned with Mulik Motor. Seats are limited — call us today to reserve yours.',
+      ctaBtn1:         '📞 Call Mulik Sir Now',
+      ctaBtn2:         '💬 WhatsApp Us',
+      ctaHours:        '🕐 Open Daily: 7:00 AM – 9:00 PM  |  Vishrantwadi, Alandi Road, Pune',
+      footerDesc:      "Pune's trusted, government-approved driving school. Serving Vishrantwadi and Alandi Road with patience, expertise, and dedication.",
+      footerCopyright: '© 2025 Mulik Motor Driving School. All rights reserved.',
+      trainer1Name:    'Mulik Sir',
+      trainer1Role:    'Founder & Head Trainer',
+      trainer1Bio:     'Over a decade of experience shaping confident drivers in Vishrantwadi. Known for his calm demeanor and structured teaching style.',
+      trainer1Initial: 'MS',
+      trainer2Name:    'Ashish Sir',
+      trainer2Role:    'Senior Driving Instructor',
+      trainer2Bio:     'Specializes in beginner and women learners. Students consistently rate his sessions as comfortable and encouraging.',
+      trainer2Initial: 'AS',
+      trainer3Name:    'Mangesh Sir',
+      trainer3Role:    'Driving Instructor & Workshop Lead',
+      trainer3Bio:     'Expert in mechanical fundamentals and advanced road driving. Leads the Pinpoint Workshop sessions.',
+      trainer3Initial: 'MG',
+      seoTitle:        'Mulik Motor Driving School | Government-Approved | Vishrantwadi, Pune',
+      seoDescription:  "Mulik Motor Driving School — Pune's Premier Government-Approved Driving School in Vishrantwadi. 4.9★ rated, Women-Owned, Expert Trainers.",
+    };
+
+    document.querySelectorAll('input[type="text"][data-field], input[type="tel"][data-field], textarea[data-field]').forEach(input => {
+      const key = input.getAttribute('data-field');
+      const defaultVal = DEFAULTS[key];
+
+      // Only add button if a default exists for this field
+      if (defaultVal === undefined || defaultVal === '') return;
+
+      // Wrap the input + button in a relative container
+      const parent = input.parentElement;
+      if (!parent || parent.classList.contains('default-wrap')) return;
+
+      // Create wrapper
+      const wrap = document.createElement('div');
+      wrap.className = 'default-wrap';
+
+      // Insert wrapper before input, move input inside
+      parent.insertBefore(wrap, input);
+      wrap.appendChild(input);
+
+      // Create the restore button
+      const btn = document.createElement('button');
+      btn.type      = 'button';
+      btn.className = 'btn-restore-default';
+      btn.title     = `Restore original: "${defaultVal.length > 40 ? defaultVal.slice(0,40)+'…' : defaultVal}"`;
+      btn.innerHTML = '↺';
+
+      // Show tooltip on hover with full default value
+      btn.setAttribute('data-default-val', defaultVal);
+
+      // On click: fill field with default, trigger save, show flash
+      btn.addEventListener('click', () => {
+        input.value = defaultVal;
+
+        // Visual feedback on the button
+        btn.textContent  = '✓';
+        btn.classList.add('restored');
+        setTimeout(() => {
+          btn.innerHTML   = '↺';
+          btn.classList.remove('restored');
+        }, 1500);
+
+        // Highlight the input briefly
+        input.classList.add('field-restored');
+        setTimeout(() => input.classList.remove('field-restored'), 1200);
+
+        // Auto-save this field immediately
+        const patch = {};
+        patch[key]  = defaultVal;
+        saveSettings(patch);
+
+        // Show status
+        showEditorStatus(`↺ "${key}" restored to default. Click Save All to publish.`, 'success');
+      });
+
+      wrap.appendChild(btn);
+    });
+  }
+
   // ── INIT ──────────────────────────────────────────────────────
   function init() {
     populateEditor();
@@ -274,6 +393,7 @@
     setupResetButton();
     setupPreviewButton();
     setupImageUploads();
+    setupDefaultButtons();  // ← new
 
     // Show saved images in preview
     const s = loadSettings();
