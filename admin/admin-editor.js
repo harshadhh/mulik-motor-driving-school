@@ -87,17 +87,48 @@
   }
 
   // ── Handle section tab switching inside editor ────────────────
+  // Uses event DELEGATION on the container — survives any DOM changes
   function setupEditorTabs() {
-    document.querySelectorAll('.editor-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        const panelId = tab.getAttribute('data-panel');
-        const panel   = document.getElementById('epanel-' + panelId);
-        if (panel) panel.classList.add('active');
+    // Remove any old listener first
+    const container = document.getElementById('section-editor');
+    if (!container) return;
+
+    if (container._tabListenerAttached) return; // prevent duplicate
+    container._tabListenerAttached = true;
+
+    container.addEventListener('click', function(e) {
+      const tab = e.target.closest('.editor-tab');
+      if (!tab) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Deactivate all tabs and panels
+      container.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+      container.querySelectorAll('.editor-panel').forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
       });
+
+      // Activate clicked tab
+      tab.classList.add('active');
+
+      // Activate matching panel
+      const panelId = tab.getAttribute('data-panel');
+      const panel   = document.getElementById('epanel-' + panelId);
+      if (panel) {
+        panel.classList.add('active');
+        panel.style.display = 'block';
+      }
     });
+
+    // Make sure first panel is shown correctly on init
+    const firstActive = container.querySelector('.editor-tab.active');
+    if (firstActive) {
+      container.querySelectorAll('.editor-panel').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+      const panelId = firstActive.getAttribute('data-panel');
+      const panel   = document.getElementById('epanel-' + panelId);
+      if (panel) { panel.style.display = 'block'; panel.classList.add('active'); }
+    }
   }
 
   // ── Color picker live update ──────────────────────────────────
