@@ -285,3 +285,107 @@
   };
 
 })();
+
+/* ── EXTENDED SETTINGS LOADER — applies new fields added in v2 ── */
+(function () {
+  'use strict';
+  const KEY = 'mulik_site_settings';
+  function get() { try { const s = localStorage.getItem(KEY); return s ? JSON.parse(s) : {}; } catch(e) { return {}; } }
+  function q(sel) { return document.querySelector(sel); }
+  function qa(sel) { return document.querySelectorAll(sel); }
+  function setText(sel, val) { if (!val) return; qa(sel).forEach(e => e.textContent = val); }
+
+  function applyExtended(s) {
+
+    /* ── FONT SIZES ─────────────────────────────────────────── */
+    const root = document.documentElement;
+    if (s.fontSizeBody)    root.style.setProperty('--fs-body',    s.fontSizeBody);
+    if (s.fontSizeHero)    root.style.setProperty('--fs-hero',    s.fontSizeHero);
+    if (s.fontSizeSection) root.style.setProperty('--fs-section', s.fontSizeSection);
+    if (s.fontSizeBtn)     root.style.setProperty('--fs-btn',     s.fontSizeBtn);
+    if (s.btnRadius)       root.style.setProperty('--radius-pill',s.btnRadius);
+    if (s.cardRadius)      root.style.setProperty('--radius',     s.cardRadius);
+
+    /* ── COURSES ────────────────────────────────────────────── */
+    setText('[data-s="coursesTag"]',   s.coursesTag);
+    setText('[data-s="coursesTitle"]', s.coursesTitle);
+    setText('[data-s="coursesSub"]',   s.coursesSub);
+    // Course 1
+    setText('[data-s="course1Name"]', s.course1Name);
+    setText('[data-s="course1Badge"]',s.course1Badge);
+    setText('[data-s="course1Desc"]', s.course1Desc);
+    setText('[data-s="course1F1"]',   s.course1F1);
+    setText('[data-s="course1F2"]',   s.course1F2);
+    setText('[data-s="course1F3"]',   s.course1F3);
+    setText('[data-s="course1F4"]',   s.course1F4);
+    setText('[data-s="course1F5"]',   s.course1F5);
+    // Course 2
+    setText('[data-s="course2Name"]', s.course2Name);
+    setText('[data-s="course2Icon"]', s.course2Icon);
+    setText('[data-s="course2Desc"]', s.course2Desc);
+    setText('[data-s="course2F1"]',   s.course2F1);
+    setText('[data-s="course2F2"]',   s.course2F2);
+    setText('[data-s="course2F3"]',   s.course2F3);
+    setText('[data-s="course2F4"]',   s.course2F4);
+    // Course 3
+    setText('[data-s="course3Name"]', s.course3Name);
+    setText('[data-s="course3Icon"]', s.course3Icon);
+    setText('[data-s="course3Desc"]', s.course3Desc);
+    setText('[data-s="course3F1"]',   s.course3F1);
+    setText('[data-s="course3F2"]',   s.course3F2);
+    setText('[data-s="course3F3"]',   s.course3F3);
+    setText('[data-s="course3F4"]',   s.course3F4);
+    // Course 4
+    setText('[data-s="course4Name"]', s.course4Name);
+    setText('[data-s="course4Icon"]', s.course4Icon);
+    setText('[data-s="course4Desc"]', s.course4Desc);
+    setText('[data-s="course4F1"]',   s.course4F1);
+    setText('[data-s="course4F2"]',   s.course4F2);
+    setText('[data-s="course4F3"]',   s.course4F3);
+    setText('[data-s="course4F4"]',   s.course4F4);
+
+    /* ── REVIEWS ────────────────────────────────────────────── */
+    setText('[data-s="reviewsTag"]',   s.reviewsTag);
+    setText('[data-s="reviewsTitle"]', s.reviewsTitle);
+    for (let i = 1; i <= 7; i++) {
+      setText(`[data-s="review${i}Text"]`,  s[`review${i}Text`]);
+      setText(`[data-s="review${i}Name"]`,  s[`review${i}Name`]);
+      setText(`[data-s="review${i}Stars"]`, s[`review${i}Stars`]);
+    }
+
+    /* ── FOOTER BADGES & SOCIAL ─────────────────────────────── */
+    setText('[data-s="footerBadge1"]', s.footerBadge1);
+    setText('[data-s="footerBadge2"]', s.footerBadge2);
+    setText('[data-s="footerBadge3"]', s.footerBadge3);
+    if (s.socialFacebook)    { const a = q('[data-s="socialFacebook"]');    if (a) { a.href = s.socialFacebook;    a.style.display = ''; } }
+    if (s.socialInstagram)   { const a = q('[data-s="socialInstagram"]');   if (a) { a.href = s.socialInstagram;   a.style.display = ''; } }
+    if (s.socialYouTube)     { const a = q('[data-s="socialYouTube"]');     if (a) { a.href = s.socialYouTube;     a.style.display = ''; } }
+    if (s.socialGoogleReview){ const a = q('[data-s="socialGoogleReview"]');if (a) { a.href = s.socialGoogleReview;a.style.display = ''; } }
+
+    /* ── NAVIGATION ─────────────────────────────────────────── */
+    setText('[data-s="nav1Text"]',   s.nav1Text);
+    setText('[data-s="nav2Text"]',   s.nav2Text);
+    setText('[data-s="nav3Text"]',   s.nav3Text);
+    setText('[data-s="nav4Text"]',   s.nav4Text);
+    setText('[data-s="navCtaText"]', s.navCtaText);
+
+    /* ── ANNOUNCEMENT BAR ───────────────────────────────────── */
+    const bar = q('#announcementBar');
+    if (bar && s.announcementText) {
+      bar.textContent = s.announcementText;
+      bar.style.display = 'block';
+      if (s.announcementColor) bar.style.background = s.announcementColor;
+    } else if (bar && !s.announcementText) {
+      bar.style.display = 'none';
+    }
+  }
+
+  const s = get();
+  if (Object.keys(s).length > 0) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => applyExtended(s));
+    } else {
+      applyExtended(s);
+    }
+  }
+})();
