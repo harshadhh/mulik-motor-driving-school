@@ -214,3 +214,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('✅ Mulik Motor Driving School — Site loaded successfully!');
 });
+
+/* ============================================================
+   GALLERY — Loads from localStorage, renders with filter + lightbox
+   ============================================================ */
+(function() {
+  const GALLERY_KEY = 'mulik_gallery_data';
+  const SETTINGS_KEY = 'mulik_site_settings';
+
+  function getGallery() {
+    try { return JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]'); } catch(e) { return []; }
+  }
+
+  function getSettings() {
+    try { return JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}'); } catch(e) { return {}; }
+  }
+
+  function buildGallery() {
+    var items   = getGallery();
+    var grid    = document.getElementById('galleryGrid');
+    var filters = document.getElementById('galleryFilters');
+    var empty   = document.getElementById('galleryEmpty');
+    if (!grid || !filters) return;
+
+    if (!items.length) { if (empty) empty.style.display = 'block'; return; }
+    if (empty) empty.style.display = 'none';
+
+    // Collect unique categories
+    var cats = ['all'];
+    items.forEach(function(item) { if (item.category && !cats.includes(item.category)) cats.push(item.category); });
+
+    // Build filter buttons
+    filters.innerHTML = '';
+    cats.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'gallery-filter-btn' + (cat === 'all' ? ' active' : '');
+      btn.setAttribute('data-cat', cat);
+      btn.textContent = cat === 'all' ? 'All Photos' : cat;
+      btn.onclick = function() {
+        document.querySelectorAll('.gallery-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        document.querySelectorAll('.gallery-item').forEach(function(el) {
+          el.classList.toggle('hidden', cat !== 'all' && el.getAttribute('data-cat') !== cat);
+        });
+      };
+      filters.appendChild(btn);
+    });
+
+    // Build grid items
+    // Keep only the gallery items (remove empty state but keep it in DOM)
+    Array.from(grid.querySelectorAll('.gallery-item')).forEach(function(el) { el.remove(); });
+
+    items.forEach(function(item, idx) {
+      var el = document.createElement('div');
+      el.className = 'gallery-item';
+      el.setAttribute('data-cat', item.category || '');
+      el.setAttribute('data-idx', idx);
+      el.innerHTML =
+        '<img src="' + item.src + '" alt="' + (item.caption || '') + '" loading="lazy" />' +
+        '<div class="gallery-item-overlay">' +
+          '<div class="gallery-item-caption">' +
+            (item.category ? '<span class="gallery-item-tag">' + item.category + '</span><br/>' : '') +
+            (item.caption || '') +
+          '</div>' +
+        '</div>';
+      el.onclick = function() { openLightbox(idx, items); };
+      grid.appendChild(el);
+    });
+  }
+
+  // Lightbox
+  var currentIdx = 0;
+  var currentItems = [];
+
+  function openLightbox(idx, items) {
+    currentIdx  = idx;
+    currentItems = items;
+    var lb = document.getElementById('galleryLightbox');
+    if (!lb) return;
+    lb.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    showLightboxItem(idx);
+  }
+
+  function showLightboxItem(idx) {
+    var item = currentItems[idx];
+    if (!item) return;
+    var img  = document.getElementById('lightboxImg');
+    var cap  = document.getElementById('lightboxCaption');
+    if (img) img.src = item.src;
+    if (cap) cap.textContent = (item.caption || '') + (item.category ? '  ·  ' + item.category : '');
+    currentIdx = idx;
+  }
+
+  function closeLightbox() {
+    var lb = document.getElementById('galleryLightbox');
+    if (lb) lb.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    buildGallery();
+
+    // Apply hero photo from settings
+    var s = getSettings();
+    if (s.heroPhotoUrl) {
+      var wrap = document.getElementById('heroPhotoWrap');
+      var img  = document.getElementById('heroPhoto');
+      var def  = document.getElementById('heroDefault');
+      if (wrap && img) { img.src = s.heroPhotoUrl; wrap.style.display = 'block'; }
+      if (def) def.style.display = 'none';
+    }
+
+    // Apply gallery text settings
+    if (s.galleryTag)   { var el = document.querySelector('[data-s="galleryTag"]');   if (el) el.textContent = s.galleryTag; }
+    if (s.galleryTitle) { var el = document.querySelector('[data-s="galleryTitle"]'); if (el) el.textContent = s.galleryTitle; }
+    if (s.gallerySub)   { var el = document.querySelector('[data-s="gallerySub"]');   if (el) el.textContent = s.gallerySub; }
+
+    // Lightbox controls
+    var closeBtn = document.getElementById('lightboxClose');
+    var backdrop = document.getElementById('lightboxBackdrop');
+    var prevBtn  = document.getElementById('lightboxPrev');
+    var nextBtn  = document.getElementById('lightboxNext');
+    if (closeBtn) closeBtn.onclick = closeLightbox;
+    if (backdrop) backdrop.onclick = closeLightbox;
+    if (prevBtn)  prevBtn.onclick  = function() { showLightboxItem((currentIdx - 1 + currentItems.length) % currentItems.length); };
+    if (nextBtn)  nextBtn.onclick  = function() { showLightboxItem((currentIdx + 1) % currentItems.length); };
+
+    // Keyboard nav
+    document.addEventListener('keydown', function(e) {
+      var lb = document.getElementById('galleryLightbox');
+      if (!lb || lb.style.display === 'none') return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  showLightboxItem((currentIdx - 1 + currentItems.length) % currentItems.length);
+      if (e.key === 'ArrowRight') showLightboxItem((currentIdx + 1) % currentItems.length);
+    });
+  });
+})();
