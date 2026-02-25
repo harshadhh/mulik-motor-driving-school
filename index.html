@@ -40,8 +40,17 @@
   </script>
 
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Dynamic font size overrides from site editor */
+    body { font-size: var(--fs-body, 16px); }
+    .hero-title { font-size: var(--fs-hero, clamp(52px, 8vw, 96px)) !important; }
+    .section-title { font-size: var(--fs-section, clamp(30px, 5vw, 52px)) !important; }
+    .btn { font-size: var(--fs-btn, 16px) !important; }
+  </style>
 </head>
 <body>
+  <!-- ANNOUNCEMENT BAR -->
+  <div id="announcementBar" data-s="announcementBar" style="display:none;background:#D32F2F;color:white;text-align:center;padding:9px 20px;font-size:13px;font-weight:600;letter-spacing:0.3px;"></div>
 
   <!-- ============ HEADER ============ -->
   <header class="header" id="header">
@@ -54,11 +63,11 @@
         </div>
       </a>
       <nav class="nav" id="nav">
-        <a href="#courses"  class="nav-link">Our Courses</a>
-        <a href="#process"  class="nav-link">License Process</a>
-        <a href="#trainers" class="nav-link">About Us</a>
-        <a href="#contact"  class="nav-link">Contact</a>
-        <a href="tel:+91XXXXXXXXXX" data-s="phoneHref" class="btn btn-primary btn-sm">Enroll Now</a>
+        <a href="#courses"  class="nav-link" data-s-href="nav1Text"><span data-s="nav1Text">Our Courses</span></a>
+        <a href="#process"  class="nav-link"><span data-s="nav2Text">License Process</span></a>
+        <a href="#trainers" class="nav-link"><span data-s="nav3Text">About Us</span></a>
+        <a href="#contact"  class="nav-link"><span data-s="nav4Text">Contact</span></a>
+        <a href="tel:+91XXXXXXXXXX" data-s="phoneHref" class="btn btn-primary btn-sm"><span data-s="navCtaText">Enroll Now</span></a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -148,7 +157,7 @@
   <section class="section" id="courses">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">What We Offer</span>
+        <span class="section-tag" data-s="coursesTag">What We Offer</span>
         <h2 class="section-title">Courses Built for<br/><span class="text-accent">Every Kind of Learner</span></h2>
         <p class="section-sub">Whether you're a complete beginner or need a refresher — we have a course designed for you.</p>
       </div>
@@ -346,7 +355,7 @@
   <section class="section testimonials-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">What Our Students Say</span>
+        <span class="section-tag" data-s="reviewsTag">What Our Students Say</span>
         <h2 class="section-title">380+ Students.<br/><span class="text-accent">One Consistent Story.</span></h2>
       </div>
     </div>
@@ -439,9 +448,9 @@
         </div>
         <p data-s="footerDesc">Pune's trusted, government-approved driving school. Serving Vishrantwadi and Alandi Road with patience, expertise, and dedication.</p>
         <div class="footer-badges">
-          <span>🏛️ Govt. Approved</span>
-          <span>♀ Women-Owned</span>
-          <span>⭐ 4.9 Rated</span>
+          <span data-s="footerBadge1">🏛️ Govt. Approved</span>
+          <span data-s="footerBadge2">♀ Women-Owned</span>
+          <span data-s="footerBadge3">⭐ 4.9 Rated</span>
         </div>
       </div>
       <div class="footer-links">
