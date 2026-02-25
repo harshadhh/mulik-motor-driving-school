@@ -252,12 +252,12 @@
   }
 
   // Run immediately on script load (before DOM fully parsed)
-  // for colors/fonts to prevent flash
+  // for colors/fonts to prevent flash — guard against undefined values
   const earlySettings = loadSettings();
-  setCSSVar('--red',       earlySettings.colorPrimary);
-  setCSSVar('--blue',      earlySettings.colorSecondary);
-  setCSSVar('--text-dark', earlySettings.colorDark);
-  setCSSVar('--bg',        earlySettings.colorBg);
+  if (earlySettings.colorPrimary)   setCSSVar('--red',       earlySettings.colorPrimary);
+  if (earlySettings.colorSecondary) setCSSVar('--blue',      earlySettings.colorSecondary);
+  if (earlySettings.colorDark)      setCSSVar('--text-dark', earlySettings.colorDark);
+  if (earlySettings.colorBg)        setCSSVar('--bg',        earlySettings.colorBg);
 
   // Apply everything else after DOM is ready
   if (document.readyState === 'loading') {
